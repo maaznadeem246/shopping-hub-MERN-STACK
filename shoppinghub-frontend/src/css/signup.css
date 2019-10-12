@@ -1,0 +1,174 @@
+
+
+.forminputcss{
+   margin-top:20px;
+    margin-bottom:20px;
+   padding:10px;
+}
+
+.signupRadio{
+
+}
+
+/* The containersignup */
+.containersignup {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-left:10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containersignup  input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 28px;
+  width: 28px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.containersignup:hover  .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.containersignup  [type="radio"]:checked .conts + .checkmark  {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.containersignup  input:checked .checkmark:after  {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containersignup  .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: black;
+}
+
+.accountSecCss{
+  position: relative;
+}
+.signupHead{
+  font-size:40px;
+}
+
+.accountSecHead{
+  font-size:20px;
+}
+
+.signUpformCss{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  
+  
+  border:1.2px solid rgb(197, 197, 197);
+  border-radius: 3px;
+}
+.signUpformCssf{
+  padding:40px 40px 20px 40px;
+}
+.signUpCssHead{
+  font-size: 40px;
+  background: #649173;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #DBD5A4, #649173);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #DBD5A4, #649173); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  text-align: center;
+  padding:35px 0px 35px 0px;
+  color:white;
+}
+
+.signUpSubmitButton{
+  margin-top: 25px;
+  padding:10px 60px 10px 60px;
+  background-color: transparent;
+  border-color: #649173;
+  color:#649173;
+ outline: none
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus{
+
+    box-shadow: none;
+
+}
+
+.btn-primary:not(:disabled):not(.disabled):active{
+    background-color:#649173;
+  color:white;
+  border-color:inherit;
+  outline: none
+}
+
+.signUpSubmitButton:hover{
+  background-color: #649173;
+  color:white;
+  border-color: #649173;
+   outline: none
+}
+
+.signUpSubmitButton:focus{
+  box-shadow: none;
+} 
+
+.signUpInput{
+  border-top:none;
+  border-left:none;
+  border-right:none;
+  border-radius: 0px;
+  padding-top:0px;
+}
+
+.signUpInput:focus{
+  box-shadow: none;
+
+}
+
+.signUpDF{
+  padding:3px 3px 3px 3px;
+  margin-top:0px;
+    font-size: 0.9rem;
+}
+
+
+@media (max-width: 576px) { 
+  .signUpformCssf{
+  padding:20px 20px 20px 20px;
+  }
+  .signUpformCss{
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .signUpCssHead{
+    font-size: 35px;
+  }
+
+}
