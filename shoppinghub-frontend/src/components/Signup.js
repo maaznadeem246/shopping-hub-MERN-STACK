@@ -41,9 +41,9 @@ class Signup extends Component {
     formSubmit = event => {
         event.preventDefault()
         let val = this.validationOfForm()
-        console.log(val)
+        //console.log(val)
         if(val){
-            const {name, email, password, account, registerUser} = this.state
+            const {name, email, password, account} = this.state
             
             const dat = {
                 name, email, password, account
@@ -54,13 +54,16 @@ class Signup extends Component {
     }
 
     componentWillReceiveProps(props){
-        console.log(props)
+        //console.log(props)
         const er = this.state.error
-        if(!props.pending && props.error){
+        if(props.error){
                this.setState({
                    error:{...er,ers:props.error}
                })
         }
+        if(!props.error && !props.pending){
+            props.history.push({pathname:'/home'})
+        }   
     }
 
 
@@ -122,7 +125,7 @@ class Signup extends Component {
             }
         }
         
-        if ((!(confirmPassword == password)) && (confirmPassword.length < 10 && confirmPassword.length >= 6) && (password.length < 10 && password.length >= 6)) {
+        if ((!(confirmPassword === password)) && (confirmPassword.length < 10 && confirmPassword.length >= 6) && (password.length < 10 && password.length >= 6)) {
             ru = false
             error.erconfirmPassword = "Passwords are not same"
            // console.log("Fields are required")
@@ -155,6 +158,9 @@ class Signup extends Component {
                                             <div className=" signUpCssHead ">
                                                 Sign Up
                                         </div>
+                                            <Form.Text style={this.state.error.ers && { background: '#f8d7da' }} className="signUpDFS text-muted">
+                                                {this.state.error.ers && this.state.error.ers}
+                                            </Form.Text>
                                             <div className="signUpformCssf">
                                             <Form.Group controlId="formBasicName">
                                                 <Form.Label className="signLabelCss">Name</Form.Label>
