@@ -5,14 +5,22 @@ const Profiles = require('../models/profiles')
 
 routes.post('/signup', async(req,res)=> {
     try{
+        
+        const emailChecking = await Profiles.findOne({ email: req.body.email},function (err,docs) {
+            return docs
+        })
+
+        if (emailChecking) {
+            throw new Error("Email is being used !")
+        }
 
         const profile = await Profiles(req.body).save()
         const token = await profile.generateAuthToken()
+
+        res.send({ profile, token })
         
-        res.send({profile, token})
     }catch(e){
-        console.log(e)
-        res.status(400).send({error:true,e})
+        res.status(400).send({error:true, e:e.message})
     }    
 },(error, req, res, next)=>{
 

@@ -13,7 +13,7 @@ export default function (state = initialState, action){
         case SIGNUP_USER_R_RECEIVED:
             return {...state, pending:false, userData:action.payload, error:null }
         case SIGNUP_USER_ERROR:
-            return {...state, error:action.payload}
+            return { ...state, pending: false, userData: {}, error:action.payload}
         default:
             return state
     }

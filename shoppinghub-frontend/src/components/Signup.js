@@ -23,6 +23,7 @@ class Signup extends Component {
                 erpassword:null,
                 erconfirmPassword:null,
                 eraccount:null,
+                ers:null
             },
 
         }
@@ -54,6 +55,12 @@ class Signup extends Component {
 
     componentWillReceiveProps(props){
         console.log(props)
+        const er = this.state.error
+        if(!props.pending && props.error){
+               this.setState({
+                   error:{...er,ers:props.error}
+               })
+        }
     }
 
 
@@ -280,7 +287,9 @@ class Signup extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        data:state.signUpUser
+        userData:state.signUpUser.userData,
+        pending:state.signUpUser.pending,
+        error:state.signUpUser.error
     }
 }
 

@@ -26,7 +26,7 @@ export const signUp = async (dispatch,data) => {
       })
     }
   }catch (er){
-    //await console.log(er)
+    await console.log(er)
     await dispatch({
       type:SIGNUP_USER_ERROR,
       payload:er
