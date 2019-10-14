@@ -1,6 +1,6 @@
 import { SIGNUP_USER_R_RECEIVED, SIGNUP_USER_ERROR } from '../constants/constants'
+import {api} from "./apiDetails"
 
-const api = "http://localhost:3001"
 
 
 const headers = {

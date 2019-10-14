@@ -11,7 +11,7 @@ import thunk from "redux-thunk"
 import rootReducer from "./reducers/rootReducer"
 import Home from './components/Home'
 import Signin from './components/Signin'
-import Signup from './components/Signup'
+import SignupContainer from './containers/signupContainer'
 
 import * as serviceWorker from './serviceWorker';
 
@@ -24,7 +24,7 @@ ReactDOM.render(
                     <Switch>
                         <Route exact={true} path="/" component={Home}/>
                         <Route exact={true} path="/signin" component={Signin}/>
-                        <Route exact={true} path="/signup" component={Signup}/>
+                        <Route exact={true} path="/signup" component={SignupContainer}/>
                     </Switch>
                 </BrowserRouter>
             </Provider>

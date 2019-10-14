@@ -1,10 +1,11 @@
-import "../css/signup.css";
+import "../css/sign.css";
 import React, { Component } from 'react';
 import {Container , Row, Col, Form, Button} from "react-bootstrap";
+import {Link} from 'react-router-dom'
 import validator from 'validator';
 
 import {connect} from "react-redux"
-import {signupUser} from "../actions/signUpActions"
+
 
 
 
@@ -43,10 +44,10 @@ class Signup extends Component {
         let val = this.validationOfForm()
         //console.log(val)
         if(val){
-            const {name, email, password, account} = this.state
+            const {name, email, password, confirmPassword, account} = this.state
             
             const dat = {
-                name, email, password, account
+                name, email, password, confirmPassword, account
             }
             this.props.signupUser(dat)
             
@@ -76,11 +77,17 @@ class Signup extends Component {
     }
 
     validationOfForm = () => {
-            const {name,email,password,confirmPassword,account,error,registerUser} = this.state
+            const {name,email,password,confirmPassword,account,error} = this.state
         //console.log(name, ' ', email, ' ', password, ' ', confirmPassword, ' ' , account)
         let ru = true
         if(!name.length <= 0){
-        if(!validator.isAlpha(name)){
+        let names = name.trim()
+        
+        let nru = names.split(' ').filter(n => {
+            return !validator.isAlpha(n)
+        })
+
+        if(nru.length != 0){
             error.ername = "Name should be Alpha"
             ru = false
             //console.log("Name is not Alpha")
@@ -171,7 +178,7 @@ class Signup extends Component {
                                                     onChange={this.changeHandler} 
                                                     value={this.state.name} 
                                                     name="name" 
-                                                    />
+                                                />
                                                    
                                                 
                                                     <Form.Text style={this.state.error.ername && { background:'#f8d7da'}} className="signUpDF text-muted">
@@ -272,9 +279,13 @@ class Signup extends Component {
                                             </Form.Group>
                                             
                                                 <Form.Group className="text-center">
-                                                    <Button className="signUpSubmitButton "   type="submit">
-                                                Register
-                                            </Button>
+                                                <Button className="signUpSubmitButton "   type="submit">
+                                                    Register
+                                                </Button>
+                                                
+                                                </Form.Group>
+                                                <Form.Group className='text-center'>
+                                                    <Link to="/signin" className="signLink">Sign In !</Link>
                                                 </Form.Group>
                                             </div>
                                         </Form>
@@ -291,14 +302,8 @@ class Signup extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        userData:state.signUpUser.userData,
-        pending:state.signUpUser.pending,
-        error:state.signUpUser.error
-    }
-}
 
-export default connect(mapStateToProps,{signupUser})(Signup);
+export default Signup;
+
 
 

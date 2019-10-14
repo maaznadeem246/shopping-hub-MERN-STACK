@@ -6,12 +6,18 @@ const Profiles = require('../models/profiles')
 routes.post('/signup', async(req,res)=> {
     try{
         
-        const emailChecking = await Profiles.findOne({ email: req.body.email},function (err,docs) {
+        const {email, password, confirmPassword }  = req.body
+       
+        const emailChecking = await Profiles.findOne({ email : email },function (err,docs) {
             return docs
         })
 
         if (emailChecking) {
             throw new Error("Email is being used !")
+        }
+
+        if(password !== confirmPassword){
+            throw new Error("Passwords are not same !")
         }
 
         const profile = await Profiles(req.body).save()
@@ -20,6 +26,7 @@ routes.post('/signup', async(req,res)=> {
         res.send({ profile, token })
         
     }catch(e){
+
         res.status(400).send({error:true, e:e.message})
     }    
 },(error, req, res, next)=>{
