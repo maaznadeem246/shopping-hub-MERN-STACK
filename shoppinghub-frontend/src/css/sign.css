@@ -105,6 +105,7 @@ background: linear-gradient(to right, #DBD5A4, #649173); /* W3C, IE 10+/ Edge, F
   text-align: center;
   padding:35px 0px 35px 0px;
   color:white;
+  
 }
 
 .signUpSubmitButton , .signInSubmitButton{
@@ -161,13 +162,16 @@ font-size: 1.2em;
   padding:3px 3px 3px 3px;
   margin-top:0px;
     font-size: 0.9rem;
+    display: none;
 }
 
 .signUpDFS,.signInDFS{
+   display: none;
   padding:4px 4px 4px 4px;
   margin-top:0px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-align: center;
+
 }
 
 
@@ -185,6 +189,65 @@ border-bottom:1px solid white;
   border-bottom:1px solid #649173;
 }
 
+
+.fade-in {
+    animation: fadeIn ease 0.4s;
+  -webkit-animation: fadeIn ease 0.4s;
+  -moz-animation: fadeIn ease 0.4s;
+  -o-animation: fadeIn ease 0.4s;
+  -ms-animation: fadeIn ease 0.4s;
+}
+
+
+@keyframes fadeIn{
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+
+
+
+
 @media (max-width: 576px) { 
   .signUpformCssf , .signInformCssf{
   padding:20px 20px 20px 20px;
@@ -195,6 +258,7 @@ border-bottom:1px solid white;
   }
   .signUpCssHead, .signInCssHead{
     font-size: 35px;
+
   }
 
 }

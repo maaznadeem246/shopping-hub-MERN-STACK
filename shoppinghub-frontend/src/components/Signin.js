@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import validator from 'validator';
+ 
+
+
 
 class Signin extends Component {
     constructor(props) {
@@ -35,7 +38,24 @@ class Signin extends Component {
        
         if (val) {
             const { email, password } = this.state
-            // this.props.signupUser({ email, password })
+            let dat = {
+                email, password 
+            }
+
+             this.props.signinUser(dat)
+        }
+    }
+
+    componentWillReceiveProps(props) {
+        //console.log(props)
+        const er = this.state.error
+        if (props.error) {
+            this.setState({
+                error: { ...er, ers: props.error }
+            })
+        }
+        if (!props.error && !props.pending) {
+            props.history.push({ pathname: '/' })
         }
     }
 
@@ -77,8 +97,8 @@ class Signin extends Component {
             <div>
                 <Container fluid={true}>
                     <Row>
-                        <Col xs={12} sm={12} md={4} lg={4}></Col>
-                        <Col xs={12} sm={12} md={4} lg={4}>
+                        <Col xs={12} sm={12} md={3} lg={4}></Col>
+                        <Col xs={12} sm={12} md={6} lg={4}>
                             <Container>
                                 <Row>
                                     <Col>
@@ -86,7 +106,7 @@ class Signin extends Component {
                                             <div className=" signInCssHead ">
                                                 Sign In
                                             </div>
-                                            <Form.Text style={this.state.error.ers && { background: '#f8d7da' }} className="signInDFS text-muted">
+                                            <Form.Text style={this.state.error.ers && { background: '#f8d7da',display:'block' }} className="signInDFS fade-in text-muted ">
                                                 {this.state.error.ers && this.state.error.ers}
                                             </Form.Text>
                                             <div className="signInformCssf">
@@ -101,7 +121,7 @@ class Signin extends Component {
                                                     />
 
 
-                                                    <Form.Text style={this.state.error.eremail && { background: '#f8d7da' }} className="signInDF text-muted">
+                                                    <Form.Text style={this.state.error.eremail && { background: '#f8d7da', display:'block' }} className="signInDF fade-in text-muted">
                                                         {this.state.error.eremail && this.state.error.eremail}
                                                     </Form.Text>
                                                 </Form.Group>
@@ -115,7 +135,7 @@ class Signin extends Component {
                                                     name="password"
                                                     onChange={this.changeHandler}
                                                 />
-                                                <Form.Text style={this.state.error.erpassword && { background: '#f8d7da' }} className="signInDF text-muted">
+                                                <Form.Text style={this.state.error.erpassword && { background: '#f8d7da', display:'block' }} className="signInDF fade-in text-muted">
                                                     {this.state.error.erpassword && this.state.error.erpassword}
                                                 </Form.Text>
                                             </Form.Group>
@@ -134,7 +154,7 @@ class Signin extends Component {
                                 </Row>
                             </Container>
                         </Col>
-                        <Col xs={12} sm={12} md={4} lg={4}></Col>
+                        <Col xs={12} sm={12} md={3} lg={4}></Col>
                     </Row>
                 </Container>
             </div>

@@ -62,7 +62,9 @@ profileSchema.methods.generateAuthToken = async function(){
     
     const profile = this
     const token = jwt.sign({_id: profile._id.toString()}, process.env.JWT_SECRET)
+    
     profile.tokens = profile.tokens.concat({token:token})
+  
     await profile.save()
     return token
 }
@@ -72,13 +74,13 @@ profileSchema.statics.findByCredentials = async (email, password) => {
     
     const profile = await Profile.findOne({ email })
     if (!profile) {
-        throw new Error('Unable to Login')
+        throw new Error('Email or Password is not same !')
     }
 
     const isMatch = await bcryptjs.compare(password, profile.password)
 
     if (!isMatch) {
-        throw new Error('Unable to login')
+        throw new Error('Email or Password is not same !')
     }
 
     return profile

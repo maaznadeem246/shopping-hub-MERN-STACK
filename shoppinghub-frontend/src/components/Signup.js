@@ -4,8 +4,6 @@ import {Container , Row, Col, Form, Button} from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import validator from 'validator';
 
-import {connect} from "react-redux"
-
 
 
 
@@ -63,7 +61,7 @@ class Signup extends Component {
                })
         }
         if(!props.error && !props.pending){
-            props.history.push({pathname:'/home'})
+            props.history.push({pathname:'/'})
         }   
     }
 
@@ -165,7 +163,7 @@ class Signup extends Component {
                                             <div className=" signUpCssHead ">
                                                 Sign Up
                                         </div>
-                                            <Form.Text style={this.state.error.ers && { background: '#f8d7da' }} className="signUpDFS text-muted">
+                                            <Form.Text style={this.state.error.ers && { background: '#f8d7da' , display:'block' }} className="signUpDFS fade-in text-muted">
                                                 {this.state.error.ers && this.state.error.ers}
                                             </Form.Text>
                                             <div className="signUpformCssf">
@@ -181,7 +179,7 @@ class Signup extends Component {
                                                 />
                                                    
                                                 
-                                                    <Form.Text style={this.state.error.ername && { background:'#f8d7da'}} className="signUpDF text-muted">
+                                                    <Form.Text style={this.state.error.ername && { background:'#f8d7da', display:'block'}} className="signUpDF fade-in text-muted">
                                                             {this.state.error.ername && this.state.error.ername}
                                                     </Form.Text>
                                                 
@@ -196,7 +194,7 @@ class Signup extends Component {
                                                         name="email"  
                                                         />
                                                 
-                                                    <Form.Text style={this.state.error.eremail && { background: '#f8d7da' }} className="signUpDF text-muted">
+                                                    <Form.Text style={this.state.error.eremail && { background: '#f8d7da' , display:'block' }} className="signUpDF  fade-in text-muted">
                                                             {this.state.error.eremail && this.state.error.eremail}
                                                     </Form.Text>
                                                 
@@ -211,7 +209,7 @@ class Signup extends Component {
                                                         onChange={this.changeHandler}
                                                     />
 
-                                                    <Form.Text style={this.state.error.erpassword && { background: '#f8d7da' }} className="signUpDF text-muted">
+                                                    <Form.Text style={this.state.error.erpassword && { background: '#f8d7da' , display:'block' }} className="signUpDF  fade-in text-muted">
                                                         {this.state.error.erpassword && this.state.error.erpassword}
                                                     </Form.Text>
                                             </Form.Group>
@@ -224,7 +222,7 @@ class Signup extends Component {
                                                     name="confirmPassword"
                                                     onChange={this.changeHandler}
                                                 />
-                                                <Form.Text style={this.state.error.erconfirmPassword && { background: '#f8d7da' }} className="signUpDF text-muted">
+                                                <Form.Text style={this.state.error.erconfirmPassword && { background: '#f8d7da' , display:'block' }} className="signUpDF  fade-in text-muted">
                                                         {this.state.error.erconfirmPassword && this.state.error.erconfirmPassword}
                                                 </Form.Text>
                                             </Form.Group>
@@ -269,7 +267,7 @@ class Signup extends Component {
                                             <Row>
                                                 <Col>
                                                     
-                                                        <Form.Text style={this.state.error.eraccount && { background: '#f8d7da' }} className="signUpDF text-muted">
+                                                        <Form.Text style={this.state.error.eraccount && { background: '#f8d7da' , display:'block' }} className="signUpDF  fade-in text-muted">
                                                                         {this.state.error.eraccount && this.state.error.eraccount}
                                                         </Form.Text>
                                                     

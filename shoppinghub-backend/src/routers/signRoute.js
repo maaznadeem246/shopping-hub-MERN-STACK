@@ -40,8 +40,8 @@ routes.post('/signin', async (req, res) => {
         //const publicData = profile.sendPublicDataOnly()
         res.send({ profile, token })
     } catch (e) {
-        console.log(e)
-        res.status(400).send(e)
+       // console.log(e)
+        res.status(400).send({error:true,e:e.message})
     }
 })
 

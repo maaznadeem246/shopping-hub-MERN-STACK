@@ -4,12 +4,29 @@ import '../App.css';
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            signedUser:undefined
+         }
     }
+
+    componentWillMount(){
+        console.log(this.props.userDetails)
+        if(this.props.userDetails.userData.token){
+            console.log('in')
+            this.setState({
+                signedUser:this.props.userDetails
+            })
+        }
+    }
+
     render() { 
         return (
             <div>
-                Home
+                {this.state.signedUser && 
+                    <div>
+                        
+                    </div>
+                 }
             </div>
           );
     }
