@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -21,13 +22,11 @@ class Home extends Component {
 
     render() { 
         return (
-            <div>
-                {this.state.signedUser && 
                     <div>
-                        
+                        Home
                     </div>
-                 }
-            </div>
+                
+
           );
     }
 }

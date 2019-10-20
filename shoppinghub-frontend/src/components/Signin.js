@@ -47,14 +47,14 @@ class Signin extends Component {
     }
 
     componentWillReceiveProps(props) {
-        //console.log(props)
+        console.log(props.userData['name'])
         const er = this.state.error
         if (props.error) {
             this.setState({
                 error: { ...er, ers: props.error }
             })
         }
-        if (!props.error && !props.pending) {
+        if (props.userData['token']) {
             props.history.push({ pathname: '/' })
         }
     }
@@ -111,7 +111,7 @@ class Signin extends Component {
                                             </Form.Text>
                                             <div className="signInformCssf">
                                                 <Form.Group controlId="formBasicEmail">
-                                                    <Form.Label className="signLabelCss">Email</Form.Label>
+                                                    <Form.Label className="signLabelCss" >Email</Form.Label>
                                                     <Form.Control
                                                         className="signInInput"
                                                         type="text"
@@ -127,7 +127,7 @@ class Signin extends Component {
                                                 </Form.Group>
 
                                             <Form.Group controlId="formBasicPassword">
-                                                <Form.Label>Password</Form.Label>
+                                                <Form.Label className="signLabelCss">Password</Form.Label>
                                                 <Form.Control
                                                     className="signInInput"
                                                     type="password"

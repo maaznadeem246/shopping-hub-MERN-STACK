@@ -12,7 +12,7 @@ import rootReducer from "./reducers/rootReducer"
 import HomeContainer from './containers/homeContainer'
 import SigninContainer from './containers/signinContainer'
 import SignupContainer from './containers/signupContainer'
-
+import Header from "./components/header"
 import * as serviceWorker from './serviceWorker';
 
 
@@ -21,12 +21,13 @@ const store = createStore(rootReducer,applyMiddleware(thunk))
 
 ReactDOM.render(
             <Provider store={store}>
+                
                 <BrowserRouter>
+                <Header />
                     <Switch>
-                        <Route exact={true} path="/" component={HomeContainer}/>
-                        <Route exact={true} path="/home" component={HomeContainer} />
+                        <Route exact={true}  path="/" component={HomeContainer}/>
                         <Route exact={true} path="/signin" component={SigninContainer}/>
-                        <Route exact={true} path="/signup" component={SignupContainer}/>
+                        <Route  exact={true} path="/signup" component={SignupContainer}/>
                     </Switch>
                 </BrowserRouter>
             </Provider>

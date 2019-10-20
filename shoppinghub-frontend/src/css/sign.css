@@ -87,24 +87,26 @@
 }
 
 .signUpformCss, .signInformCss{
-  margin-top: 50px;
+  margin-top: 160px;
   margin-bottom: 50px;
   
   
-  border:1.2px solid rgb(197, 197, 197);
-  border-radius: 3px;
+  border:2px solid #8e8d8a;
+  
 }
 .signUpformCssf, .signInformCssf{
   padding:40px 40px 20px 40px;
 }
 .signUpCssHead, .signInCssHead{
   font-size: 40px;
-  background: #649173;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #DBD5A4, #649173);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #DBD5A4, #649173); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #eae7dc;  /* fallback for old browsers */
+background: #eae7dc;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #eae7dc, #eae7dc);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #eae7dc, #eae7dc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   text-align: center;
   padding:35px 0px 35px 0px;
-  color:white;
+  color:#8e8d8a;
   
 }
 
@@ -112,8 +114,8 @@ background: linear-gradient(to right, #DBD5A4, #649173); /* W3C, IE 10+/ Edge, F
   margin-top: 25px;
   padding:7px 60px 7px 60px;
   background-color: transparent;
-  border-color: #649173;
-  color:#649173;
+  border-color: #8e8d8a;
+  color:#8e8d8a;
  outline: none;
 font-size: 1.2em;
   
@@ -125,16 +127,16 @@ font-size: 1.2em;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active{
-    background-color:#649173;
+    background-color:#eae7dc;
   color:white;
   border-color:inherit;
   outline: none
 }
 
 .signUpSubmitButton:hover, .signInSubmitButton:hover{
-  background-color: #649173;
+  background-color: #8e8d8a;
   color:white;
-  border-color: #649173;
+  border-color: #8e8d8a;
    outline: none
 }
 
@@ -177,17 +179,28 @@ font-size: 1.2em;
 
 .signLink{
   font-size: 1em;
-  color: #649173;
+  color: #8e8d8a;
   padding-bottom: 0.1rem;
   text-decoration: none;
-border-bottom:1px solid white;
+  border-bottom:1px solid white;
 }
 
 .signLink:hover{
   text-decoration: none;
-  color:#649173;
-  border-bottom:1px solid #649173;
+  color:#8e8d8a;
+  border-bottom:1px solid #8e8d8a;
 }
+
+.signupcheckcss{
+  color:#8e8d8a;
+}
+
+.signLabelCss{
+  color: #8e8d8a;
+  font-weight: 100;  
+}
+
+
 
 
 .fade-in {
@@ -253,7 +266,7 @@ border-bottom:1px solid white;
   padding:20px 20px 20px 20px;
   }
   .signUpformCss, .signInformCss{
-    margin-top: 30px;
+    margin-top: 100px;
     margin-bottom: 30px;
   }
   .signUpCssHead, .signInCssHead{

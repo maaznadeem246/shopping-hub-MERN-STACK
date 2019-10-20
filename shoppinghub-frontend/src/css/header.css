@@ -1,0 +1,103 @@
+.navscss{
+    padding-right:40px;
+}
+
+.navitemcss{
+    color:#8e8d8a;
+    margin:0.5rem;
+    font-size: 16px;
+
+    padding:7px 14px 7px 14px;
+    cursor: pointer;
+}
+
+.navitemcss:hover{
+
+}
+
+.header{
+    background-color: #eae7dc;
+}
+
+.webName{
+    color:#e85a4f;
+    font-size: 1.6rem;
+    padding-left:20px;
+    font-weight: 600;
+}
+
+.navbarrowscss{
+  flex-direction: column;
+  align-items: unset;
+
+}
+
+.navbarsearchform{
+    margin-left: 20%;
+    padding-top:10px;
+}
+
+
+.btn-primary:not(:disabled):not(.disabled):active:focus{
+
+    box-shadow: none;
+
+}
+
+.btn-primary:not(:disabled):not(.disabled):active{
+    background-color:#eae7dc;
+  color:white;
+  border-color:inherit;
+  outline: none
+}
+
+.navsearchbutton{
+    
+    padding:5px 20px 5px 20px;
+  background-color: transparent;
+  border-color: #8e8d8a;
+  color:#8e8d8a;
+ outline: none;
+font-size: 1em;
+}
+.navsearchform{
+    display: flex;
+    flex-direction:row;
+   width: 500px;
+}
+.navseachinput{
+
+    border-radius: 4px;
+    padding-top:0px;
+    padding-bottom:0px;
+    width: 200px;
+    border:1px solid #8e8d8a;
+    background-color: transparent;
+}
+.navseachinput:focus{
+    box-shadow: none;
+    outline: none;
+  background-color: transparent;
+}
+
+.navsearchbutton:hover{
+    background-color: #8e8d8a;
+  color:white;
+  border-color: #8e8d8a;
+   outline: none
+}
+
+
+
+@media (max-width: 576px) { 
+  .navbarrowscss{
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .navbarsearchform{
+    margin-left: 0%;
+    padding-top:0px;
+}
+
+}

@@ -60,7 +60,7 @@ class Signup extends Component {
                    error:{...er,ers:props.error}
                })
         }
-        if(!props.error && !props.pending){
+        if(props.userData['token']){
             props.history.push({pathname:'/'})
         }   
     }
@@ -185,7 +185,7 @@ class Signup extends Component {
                                                 
                                             </Form.Group>
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Email address</Form.Label>
+                                                    <Form.Label className="signLabelCss">Email address</Form.Label>
                                                     <Form.Control
                                                         className="signUpInput" 
                                                         type="email" 
@@ -200,7 +200,7 @@ class Signup extends Component {
                                                 
                                             </Form.Group>
                                                 <Form.Group controlId="formBasicPassword">
-                                                    <Form.Label>Password</Form.Label>
+                                                    <Form.Label className="signLabelCss">Password</Form.Label>
                                                         <Form.Control 
                                                         className="signUpInput"
                                                         type="password" 
@@ -214,7 +214,7 @@ class Signup extends Component {
                                                     </Form.Text>
                                             </Form.Group>
                                             <Form.Group controlId="formBasicConfirmPassword">
-                                                <Form.Label>Confirm Password</Form.Label>
+                                                    <Form.Label className="signLabelCss" >Confirm Password</Form.Label>
                                                 <Form.Control 
                                                     className="signUpInput"
                                                     type="password" 
@@ -230,7 +230,7 @@ class Signup extends Component {
                                                     <Container fluid={true} style={{ paddingRight: "0px", paddingLeft: "0px" }} >
                                                 <Row noGutters={true}>
                                                     <Col>
-                                                        <Form.Label>Account</Form.Label>
+                                                            <Form.Label className="signLabelCss">Account</Form.Label>
                                                     </Col>
                                                 </Row>
                                                 <Row  noGutters={true}>
@@ -239,6 +239,7 @@ class Signup extends Component {
            
 
                                                     <Form.Check
+                                                        className="signupcheckcss"
                                                         type="radio"
                                                         name="account"
                                                         value="seller"
@@ -253,6 +254,7 @@ class Signup extends Component {
                                             </Col>
                                                 <Col>
                                                     <Form.Check
+                                                        className="signupcheckcss"
                                                         type="radio"
                                                         name='account'
                                                         value="customer"
