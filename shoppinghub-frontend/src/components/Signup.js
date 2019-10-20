@@ -53,7 +53,7 @@ class Signup extends Component {
     }
 
     componentWillReceiveProps(props){
-        //console.log(props)
+        console.log(props)
         const er = this.state.error
         if(props.error){
                this.setState({
@@ -61,6 +61,7 @@ class Signup extends Component {
                })
         }
         if(props.userData['token']){
+            localStorage.setItem('autt', props.userData['token'])
             props.history.push({pathname:'/'})
         }   
     }

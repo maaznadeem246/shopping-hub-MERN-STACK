@@ -33,7 +33,7 @@ class Header extends Component {
                             <LinkContainer to="/returnpolicy"   ><NavItem className="navitemcss" >Return  Policy</NavItem></LinkContainer>
                             
                         </Nav>
-                        <Nav className='navbarsearchform justify-content-start'>
+                        <Nav className='navbarsearchform justify-content-end'>
                          <Form className="navsearchform" >
                             <FormControl type="text" placeholder="Product Name" className="navseachinput mr-sm-2" />
                             <Button className="navsearchbutton" >Search</Button>

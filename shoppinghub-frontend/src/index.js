@@ -13,6 +13,7 @@ import HomeContainer from './containers/homeContainer'
 import SigninContainer from './containers/signinContainer'
 import SignupContainer from './containers/signupContainer'
 import Header from "./components/header"
+import Authenticate from "./components/authenticate"
 import * as serviceWorker from './serviceWorker';
 
 
@@ -26,8 +27,10 @@ ReactDOM.render(
                 <Header />
                     <Switch>
                         <Route exact={true}  path="/" component={HomeContainer}/>
+                        <Authenticate>
                         <Route exact={true} path="/signin" component={SigninContainer}/>
                         <Route  exact={true} path="/signup" component={SignupContainer}/>
+                        </Authenticate>
                     </Switch>
                 </BrowserRouter>
             </Provider>
