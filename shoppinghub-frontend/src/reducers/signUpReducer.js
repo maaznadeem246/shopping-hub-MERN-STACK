@@ -6,6 +6,7 @@ const initialState = {
     error : null,
 }
 
+
 export default function (state = initialState, action){
     switch (action.type) {
         case SIGNUP_USER_R_SENT:

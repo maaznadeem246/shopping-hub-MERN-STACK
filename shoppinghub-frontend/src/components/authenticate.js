@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // with withRouter You can get access to the history object’s properties
 import { withRouter } from 'react-router-dom';
-
+import {userToken} from "../actions/userActions"
 
 
 class Authenticate extends Component {
@@ -19,28 +19,35 @@ class Authenticate extends Component {
 
         //     this.props.history.push('/login');
         // }
-        this.checkingUser()
+        this.props.userToken();
+        console.log(this.props.token)
+        if (this.props.token == null) {
+            console.log(this.props.token)
+            this.props.history.push('/signin')
+        }
+
     }
 
-    checkingUser() {
-        const token = localStorage.getItem('autt')
-        console.log(token)
+    componentWillReceiveProps(){
+        
     }
+
 
 
     render() {
 
-       return(
-           <div></div>
-       )
+        const { children, token } = this.props;
+        //  console.log(signInUsers)
+        return token !== null ? <div>{children}</div> : "showign";
+
     }
 }
 
 function mapStateToProps(state) {
-
+    console.log(state)
     return {
-      
+        token:state.user.token
     };
 }
 
-export default withRouter(connect(mapStateToProps, {  })(Authenticate));
+export default withRouter(connect(mapStateToProps, { userToken })(Authenticate));
