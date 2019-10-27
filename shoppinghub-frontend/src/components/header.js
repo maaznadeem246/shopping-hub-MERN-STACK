@@ -2,7 +2,7 @@ import '../css/header.css'
 import React, { Component } from 'react';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Nav, Navbar, Form, NavDropdown, FormControl, Button, NavItem} from 'react-bootstrap'
-
+import {connect} from "react-redux"
 
 
 class Header extends Component {
@@ -12,6 +12,16 @@ class Header extends Component {
             signedIn:false
          }
     }
+
+    componentWillMount(){
+        console.log(this.props)
+        if(this.props.token != null){
+            this.setState({
+                signedIn:true
+            })   
+        }
+    }
+    
     render() { 
         return ( 
             <div>
@@ -28,6 +38,9 @@ class Header extends Component {
                             {
                                 !this.state.signedIn && <LinkContainer to="/signup"><NavItem className="navitemcss">Sign Up</NavItem></LinkContainer>
                             }
+
+                            
+
                             <LinkContainer to="/aboutus"   ><NavItem className="navitemcss" >About Us</NavItem></LinkContainer>
                             <LinkContainer to="/contactus"   ><NavItem className="navitemcss" >Contact Us</NavItem></LinkContainer>
                             <LinkContainer to="/returnpolicy"   ><NavItem className="navitemcss" >Return  Policy</NavItem></LinkContainer>
@@ -45,5 +58,11 @@ class Header extends Component {
         );
     }
 }
+
+function mapStateToProps(state){
+    return {
+        token: state.user.token
+    }
+}
  
-export default Header;
+export default connect(mapStateToProps, {})(Header);
