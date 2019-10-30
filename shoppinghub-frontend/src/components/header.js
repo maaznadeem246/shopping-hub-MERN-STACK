@@ -3,26 +3,36 @@ import React, { Component } from 'react';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Nav, Navbar, Form, NavDropdown, FormControl, Button, NavItem} from 'react-bootstrap'
 import {connect} from "react-redux"
-
+import { userToken, userDetails } from "../actions/userActions"
 
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            signedIn:false
-         }
-    }
-
-    componentWillMount(){
-        console.log(this.props)
-        if(this.props.token != null){
-            this.setState({
-                signedIn:true
-            })   
+            signedIn:true,
+            token:null
         }
     }
+
+    UNSAFE_componentWillMount(){
+        this.props.userToken();
+        
+    }
     
-    render() { 
+    UNSAFE_componentWillReceiveProps(props){
+        console.log(props)
+        if (props.token != null && props.token != undefined) {
+            props.userDetails(props.token)
+            this.setState({
+                signedIn: false,
+                token: props.token
+            })
+        }
+    }
+
+    
+    render() {
+
         return ( 
             <div>
                 <Navbar className="header"  expand="lg" fixed="top" >
@@ -32,11 +42,15 @@ class Header extends Component {
                         <Nav className="navscss justify-content-end">
                             <LinkContainer to="/"   ><NavItem className="navitemcss" >Home</NavItem></LinkContainer>
                             {
-                                !this.state.signedIn && <LinkContainer to="/signin" ><NavItem className="navitemcss"> Sign In</NavItem></LinkContainer>
+                                this.state.signedIn && <LinkContainer to="/signin" ><NavItem className="navitemcss"> Sign In</NavItem></LinkContainer>
                                    
                             }
                             {
-                                !this.state.signedIn && <LinkContainer to="/signup"><NavItem className="navitemcss">Sign Up</NavItem></LinkContainer>
+                                this.state.signedIn && <LinkContainer to="/signup"><NavItem className="navitemcss">Sign Up</NavItem></LinkContainer>
+                            }
+                            {
+                             //   this.state.signedIn  && <LinkContainer to="/seller" ><NavItem className="navitemcss">Seller</NavItem></LinkContainer>
+
                             }
 
                             
@@ -61,8 +75,8 @@ class Header extends Component {
 
 function mapStateToProps(state){
     return {
-        token: state.user.token
+        token: state.user.userData.token
     }
 }
  
-export default connect(mapStateToProps, {})(Header);
+export default connect(mapStateToProps, { userToken, userDetails})(Header);

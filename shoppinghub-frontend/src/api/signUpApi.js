@@ -3,12 +3,11 @@ import {api} from "./apiDetails"
 
 
 
-const headers = {
- 
+const headers = { 
   'Content-Type': 'application/json'
 }
 
-export const signUp = async (dispatch,data) => {
+const signUp = async (dispatch,data) => {
   try{
     //console.log(JSON.stringify(data))
     const signUpIt = await fetch(`${api}/signup`,{method:'POST',headers,body:JSON.stringify(data)})

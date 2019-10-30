@@ -10,7 +10,7 @@ class Home extends Component {
          }
     }
 
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         console.log(this.props.userDetails)
         if(this.props.userDetails.userData.token){
             console.log('in')
