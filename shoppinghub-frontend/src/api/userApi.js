@@ -11,18 +11,18 @@ const userTDeails = async (dispatch, token) => {
         }})
 
         const jsonData = await getTheUserData.json()
-        await console.log(jsonData)
-        // if (jsonData.error) {
-        //     await dispatch({
-        //         type: USER_DETAILS_ERROR,
-        //         payload: jsonData.e
-        //     })
-        // } else {
-        //     await dispatch({
-        //         type: USER_DETAILS_R_RECIEVED,
-        //         payload: jsonData
-        //     })
-        // }
+      //  await console.log(jsonData)
+        if (jsonData.error) {
+            await dispatch({
+                type: USER_DETAILS_ERROR,
+                payload: jsonData.e
+            })
+        } else {
+            await dispatch({
+                type: USER_DETAILS_R_RECIEVED,
+                payload: jsonData
+            })
+        }
   
     }catch(er){
         await console.log(er, "ss")

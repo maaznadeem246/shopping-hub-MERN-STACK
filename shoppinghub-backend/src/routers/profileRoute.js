@@ -7,9 +7,10 @@ routes.get('/profiles/myprofile', auth, async (req, res) => {
     try{
         
         const profile = req.profile
+        const token = req.token
         res.send(profile)
     }catch(e){
-
+        res.status(400).send({ error: true, e: e.message })
     } 
 })
 

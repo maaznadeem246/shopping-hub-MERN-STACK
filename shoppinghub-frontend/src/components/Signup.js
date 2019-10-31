@@ -80,6 +80,7 @@ class Signup extends Component {
             props.history.push({ pathname: '/' })
             console.log('in')
         }
+        this.props.userToken();
     }
 
 

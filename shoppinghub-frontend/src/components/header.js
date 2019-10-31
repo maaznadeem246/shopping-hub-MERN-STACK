@@ -10,7 +10,8 @@ class Header extends Component {
         super(props);
         this.state = { 
             signedIn:true,
-            token:null
+            token:null,
+            user:undefined
         }
     }
 
@@ -21,15 +22,23 @@ class Header extends Component {
     
     UNSAFE_componentWillReceiveProps(props){
         console.log(props)
-        if (props.token != null && props.token != undefined) {
+        if (props.token != null && props.token != undefined && this.state.token == null) {
             props.userDetails(props.token)
             this.setState({
                 signedIn: false,
                 token: props.token
             })
         }
+        if (props.user._id != null && props.user._id != undefined){
+            this.setState({
+                user:props.user
+            })
+        }
     }
 
+
+
+    
     
     render() {
 
@@ -41,6 +50,9 @@ class Header extends Component {
                     <Navbar.Collapse id="basic-navbar-nav" className="navbarrowscss justify-content-end" >
                         <Nav className="navscss justify-content-end">
                             <LinkContainer to="/"   ><NavItem className="navitemcss" >Home</NavItem></LinkContainer>
+                            <LinkContainer to="/aboutus"   ><NavItem className="navitemcss" >About Us</NavItem></LinkContainer>
+                            <LinkContainer to="/contactus"   ><NavItem className="navitemcss" >Contact Us</NavItem></LinkContainer>
+                            <LinkContainer to="/returnpolicy"   ><NavItem className="navitemcss" >Return  Policy</NavItem></LinkContainer>
                             {
                                 this.state.signedIn && <LinkContainer to="/signin" ><NavItem className="navitemcss"> Sign In</NavItem></LinkContainer>
                                    
@@ -49,15 +61,12 @@ class Header extends Component {
                                 this.state.signedIn && <LinkContainer to="/signup"><NavItem className="navitemcss">Sign Up</NavItem></LinkContainer>
                             }
                             {
-                             //   this.state.signedIn  && <LinkContainer to="/seller" ><NavItem className="navitemcss">Seller</NavItem></LinkContainer>
-
+                                this.state.user && <LinkContainer to={"/" + this.state.user.account}><NavItem className="navitemcss">{(this.state.user.account).charAt(0).toUpperCase() + (this.state.user.account).slice(1)}</NavItem></LinkContainer>
                             }
 
                             
 
-                            <LinkContainer to="/aboutus"   ><NavItem className="navitemcss" >About Us</NavItem></LinkContainer>
-                            <LinkContainer to="/contactus"   ><NavItem className="navitemcss" >Contact Us</NavItem></LinkContainer>
-                            <LinkContainer to="/returnpolicy"   ><NavItem className="navitemcss" >Return  Policy</NavItem></LinkContainer>
+
                             
                         </Nav>
                         <Nav className='navbarsearchform justify-content-end'>
@@ -74,7 +83,10 @@ class Header extends Component {
 }
 
 function mapStateToProps(state){
+
     return {
+        user: state.user.userData,
+        pending: state.user.pending,
         token: state.user.userData.token
     }
 }
