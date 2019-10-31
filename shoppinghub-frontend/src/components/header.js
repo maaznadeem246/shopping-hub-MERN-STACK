@@ -63,6 +63,7 @@ class Header extends Component {
                             {
                                 this.state.user && <LinkContainer to={"/" + this.state.user.account}><NavItem className="navitemcss">{(this.state.user.account).charAt(0).toUpperCase() + (this.state.user.account).slice(1)}</NavItem></LinkContainer>
                             }
+                            
 
                             
 

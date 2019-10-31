@@ -13,7 +13,6 @@ export default function (state = initialState, action){
         case USER_DETAILS_R_SENT:
             return { ...state, pending: true}
         case USER_DETAILS_R_RECIEVED:
-
             return {...state, userData:{...state.userData,...action.payload},pending:false}
         case USER_DETAILS_ERROR:
             return { ...state, error: action.payload,pending:false}

@@ -3,17 +3,17 @@
 }
 
 .navitemcss{
-    color:#8e8d8a;
-    margin:0.5rem;
+    color:white;
+    margin:1rem 16px 0px 16px ;
     font-size: 17px;
 
-    padding:6px 13px 0px 13px;
+    padding:0px 0px 0px 0px;
     cursor: pointer;
       border-bottom: 2px solid transparent;
 }
 .navitemcss:hover{
     
-      border-bottom: 2px solid #3b945E;
+      border-bottom: 2px solid white;
 }
 /* 
 .navitemcss::after{
@@ -32,14 +32,16 @@
 
 
 .header{
-    background-color: rgb(241, 241, 241);
+    background-color: white;
     border-bottom: 3px solid #3b945E;
+    padding: 0px;
 }
 
 .webName{
     color:#3b945E;
     font-size: 1.6rem;
-    padding-left:20px;
+    padding-left:60px;
+    padding-right:60px;
     font-weight: 600;
 }
 
@@ -49,10 +51,21 @@
 
 }
 
+.navbarrowscss::before{
+  content: '';
+  width:100%;
+  height:100%;
+
+  background-color: #3b945E;
+  position: absolute;
+  z-index: -1;
+}
+
 .navbarsearchform{
     padding-top:10px;
     padding-bottom:10px;
 }
+
 
 
 .btn-primary:not(:disabled):not(.disabled):active:focus{
@@ -72,8 +85,8 @@
     
     padding:5px 20px 5px 20px;
   background-color: transparent;
-  border-color: #8e8d8a;
-  color:#8e8d8a;
+  border-color: white;
+  color:white;
  outline: none;
 font-size: 1em;
 }
@@ -88,24 +101,41 @@ font-size: 1em;
     border-radius: 4px;
     padding-top:0px;
     padding-bottom:0px;
-    width: 580px;
+    width: 520px;
     height: 40px;
     border: none;
-    border-bottom:1px solid #8e8d8a;
+    color:white;
+    border-bottom:1px solid white;
     background-color: transparent;
     border-radius: 0px;
 }
+
+.navseachinput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.navseachinput:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+.navseachinput::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}
+
+
 .navseachinput:focus{
     box-shadow: none;
     outline: none;
-    border-color: inherit;
+    color:white;
+    border-color: white;
     background-color: transparent;
 }
 
 .navsearchbutton:hover{
-    background-color: #8e8d8a;
-  color:white;
-  border-color: #8e8d8a;
+    background-color: white;
+  color:#3b945E;
+  border-color: white;
    outline: none
 }
 
@@ -138,22 +168,49 @@ font-size: 1em;
     align-items: center;
   }
 
+  .webName{
+    padding-left:20px;
+    padding-right:0px;
+  }
+
   .navbarsearchform{
     margin-left: 0%;
     padding-top:0px;
     display: inline
 }
+.navsearchform{
+  padding-top:0px;
+  padding-right:10px;
+}
 .navseachinput{
-  width: 200px;
-
-  margin-left: 5px;
+  width: 200%;
+  padding-top:10px;
+  margin-left: 0px;
   margin-right: 10px;
   }
   .navsearchbutton{
+    margin-top:10px;
          padding:5px 10px 5px 10px; 
   }
 
   .navitemcss::after{
       display: none;
+  }
+
+  .navitemcss{
+        margin:0rem 0px 0px 0px ;
+    padding:8px 16px 8px 16px;
+    border-bottom: 1px solid white;
+  }
+  .navscss {
+    padding:0px
+}
+  .navitemcss:hover{
+    
+      border-bottom: 3px solid white;
+}
+
+  .navbarrowscss:after{
+    
   }
 }
