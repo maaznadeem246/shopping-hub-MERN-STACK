@@ -1,10 +1,10 @@
 .navscss{
-    padding-right:40px;
+    padding-left:30px;
 }
 
 .navitemcss{
     color:white;
-    margin:1rem 16px 0px 16px ;
+    margin:1rem 16px 0.3rem 16px ;
     font-size: 17px;
 
     padding:0px 0px 0px 0px;
@@ -63,6 +63,7 @@
 
 .navbarsearchform{
     padding-top:10px;
+    padding-right: 20px;
     padding-bottom:10px;
 }
 
@@ -83,57 +84,57 @@
 
 .navsearchbutton{
     
-    padding:5px 20px 5px 20px;
-  background-color: transparent;
-  border-color: white;
+    padding:4px 14px 4px 14px;
+  background-color:#3b945E;
+  border:1.6px solid white;
   color:white;
  outline: none;
-font-size: 1em;
+font-size: 0.9em;
 }
 .navsearchform{
     display: flex;
     flex-direction:row;
     align-items: center;
-    padding-right:60px; 
+    padding-right:15px; 
 }
 .navseachinput{
 
     border-radius: 4px;
     padding-top:0px;
     padding-bottom:0px;
-    width: 520px;
-    height: 40px;
+    width: 200px;
+    height: 30px;
     border: none;
-    color:white;
-    border-bottom:1px solid white;
-    background-color: transparent;
-    border-radius: 0px;
+    color: #3b945E;
+    border:1px solid white;
+    background-color: white;
+    border-radius: 2px;
 }
 
 .navseachinput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
+  color: #3b945E;
   opacity: 1; /* Firefox */
 }
 
 .navseachinput:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: white;
+  color: #3b945E;
 }
 
 .navseachinput::-ms-input-placeholder { /* Microsoft Edge */
-  color: white;
+  color: #3b945E;
 }
 
 
 .navseachinput:focus{
     box-shadow: none;
     outline: none;
-    color:white;
+    color:#3b945E;
     border-color: white;
-    background-color: transparent;
+    background-color: white;
 }
 
 .navsearchbutton:hover{
-    background-color: white;
+    background-color:white;
   color:#3b945E;
   border-color: white;
    outline: none
@@ -160,6 +161,38 @@ font-size: 1em;
 
 }
 
+.iconcss{
+  padding-right:50px;
+}
+.profile.icon {
+  color: white;
+  position: absolute;
+  margin-left: 3px;
+  margin-top: 15px;
+  width: 20px;
+  height: 14px;
+  border-left: solid 1.5px currentColor;
+  border-right: solid 1.5px currentColor;
+  border-top: solid 1.5px currentColor;
+  border-bottom: solid 1.5px currentColor;
+  border-radius: 8px 8px 0 0;
+}
+
+.profile.icon:before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: -16px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: solid 1.5px currentColor;
+}
+.profile.icon:hover{
+  cursor: pointer;
+}
+
+
 
 
 @media (max-width: 576px) { 
@@ -179,17 +212,17 @@ font-size: 1em;
     display: inline
 }
 .navsearchform{
-  padding-top:0px;
+  padding-top:10px;
   padding-right:10px;
 }
 .navseachinput{
   width: 200%;
-  padding-top:10px;
-  margin-left: 0px;
+  padding-top:0px;
+  margin-left: 10px;
   margin-right: 10px;
   }
   .navsearchbutton{
-    margin-top:10px;
+    margin-top:0px;
          padding:5px 10px 5px 10px; 
   }
 
@@ -212,5 +245,12 @@ font-size: 1em;
 
   .navbarrowscss:after{
     
+  }
+
+  .iconcss{
+    display: none;
+  }
+  .profile.icon{
+    display: none;
   }
 }
