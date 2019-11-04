@@ -16,12 +16,27 @@ import ContactUs from "./components/contactus"
 import AboutUs from "./components/aboutus"
 import ReturnPolicy from "./components/returnpolicy"
 import Header from "./components/header"
+import Account from "./components/account"
 import Authenticate from "./components/authenticate"
 import * as serviceWorker from './serviceWorker';
 
 
 
 const store = createStore(rootReducer,applyMiddleware(thunk))
+
+const Profile = () => (
+    <div>
+        Profile
+    </div>
+)
+
+const Dashboard = () => (
+    <div>
+        Dashboard
+    </div>
+)
+
+
 
 ReactDOM.render(
             <Provider store={store}>
@@ -33,9 +48,13 @@ ReactDOM.render(
                         <Authenticate>
                             <Route exact={true} path="/signin" component={SigninContainer}/>
                             <Route  exact={true} path="/signup" component={SignupContainer}/>
+                            <Route  path="/account" component={Account} />
                             <Route exact={true} path="/aboutus" component={AboutUs} />
                             <Route exact={true} path="/contactus" component={ContactUs} />
                             <Route exact={true} path="/returnpolicy" component={ReturnPolicy} />
+                            <Route exact path="/account/profile" component={Profile} />
+                            <Route exact path="/account/dashboard" component={Dashboard} />
+                            
                         </Authenticate>
                     </Switch>
                 </BrowserRouter>

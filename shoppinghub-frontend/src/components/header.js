@@ -55,15 +55,25 @@ class Header extends Component {
                             </Form>
                             <div className="iconcss">
                             {
-                                this.state.signedIn && <LinkContainer to="/signin"  ><NavItem className="profile icon"></NavItem></LinkContainer>
+                                this.state.signedIn && <LinkContainer to="/account"  ><NavItem className="profile icon"></NavItem></LinkContainer>
 
                             }
                             </div>
+                            <LinkContainer to="/cart"  ><NavItem className="iccart">
+                                <div class="icon-cart">
+                                    <div class="notificacao">0</div>
+                                    <div class="cart-line-1" ></div>
+                                    <div class="cart-line-2" ></div>
+                                    <div class="cart-line-3" ></div>
+                                    <div class="cart-wheel" ></div>
+                                </div>
+
+                            </NavItem></LinkContainer>
                         </Nav>
                         <Nav className="navscss justify-content-start">
                             <LinkContainer to="/"   ><NavItem className="navitemcss" >Home</NavItem></LinkContainer>
                             <LinkContainer to="/aboutus"   ><NavItem className="navitemcss" >About Us</NavItem></LinkContainer>
-                            <LinkContainer to="/contactus"   ><NavItem className="navitemcss" >Contact Us</NavItem></LinkContainer>
+                                <LinkContainer to="/contactus"   ><NavItem className="navitemcss" >Contact Us</NavItem></LinkContainer>
                             <LinkContainer to="/returnpolicy"   ><NavItem className="navitemcss" >Return  Policy</NavItem></LinkContainer>
                             {
                                 this.state.signedIn && <LinkContainer to="/signin" ><NavItem className="navitemcss"> Sign In</NavItem></LinkContainer>
