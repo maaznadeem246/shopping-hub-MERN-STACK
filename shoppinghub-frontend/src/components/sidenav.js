@@ -1,32 +1,19 @@
+import '../css/account.css'
 import React, { Component } from 'react';
 import styled from "styled-components"
 import {Link, BrowserRouter, Route, Switch, withRouter} from "react-router-dom"
+import { Container, Row, Col } from 'react-bootstrap'
 
 
 
 
-// css of side nav bar 
-
-const StyledSideNav = styled.div`
-  position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
-  height: 100%;
- 
-  z-index: 1;      /* Stay on top of everything */
-  top: 0em;
-  left:0em;      /* Stay at the top */
-  background-color: #3b945E; 
-  overflow-x: hidden;     /* Disable horizontal scroll */
-  border-top:2px solid #3b945E;
-  border-right:2px solid #3b945E;
-  padding-top:10%;
-`;
 
 
 // css for nav items 'NavItem' component
 const StyledNavItem = styled.div`
      
   text-align: left; /* Aligns <a> inside of NavIcon div */
-    width:270px;
+    width:inherit;
     
   a {
     display:block;
@@ -58,6 +45,7 @@ class NavItem extends Component{
         console.log(this.props)
         return(
             <StyledNavItem active={active}>
+                {/* <div class="profile-solid icon"></div> */}
                 <Link to={this.props.path} className={this.props.css} onClick={this.handleClick}>{this.props.name}</Link>
             </StyledNavItem>
         )
@@ -70,24 +58,19 @@ class SideNav extends Component {
         super(props);
         this.state = {
             activePath: props.location.pathname,
+            cHam:false,
+
             items: [
                 {
-                    path: '/account/profile', /* path is used as id to check which NavItem is active basically */
+                    path: '/dashboard/profile', /* path is used as id to check which NavItem is active basically */
                     name: 'Profile',
                     css: '',
                     key: 1 /* Key is required, else console throws error. Does this please you Mr. Browser?! */
-                },
-                {
-                    path: '/account/dashboard',
-                    name: 'Dashboard',
-                    css: '',
-                    key: 2
-                }
-                , {
-                    path: '/account/products',
+                }, {
+                    path: '/dashboard/product',
                     name: 'Products',
                     css: '',
-                    key: 3
+                    key: 2
                 }
             ]
         }
@@ -97,33 +80,78 @@ class SideNav extends Component {
             activePath:path
         }) 
     }
+
+    changeHam = () => {
+        this.setState({
+            cHam:!this.state.cHam
+        })
+    }
+
     render() {
         const {items, activePath} = this.state
-        console.log(this.props) 
+        console.log(window) 
         return (
-            <StyledSideNav>
-                {
-                  items.map((item) => {
-                      console.log(item.path)
-                      console.log(activePath)
-                      console.log(item.path === activePath)
-                        return (
-                             <NavItem 
-                                path={item.path} 
-                                name={item.name} 
-                                css={item.css} 
-                                onItemClick={this.onItemClick} 
-                                active={item.path === activePath} 
-                                key={item.key}
-                            /> 
-                        ) 
-            })
-        }
+            <Container style={{ }} fluid={true}>
+                <Row >
 
-            </StyledSideNav>
+                    <Col style={{ padding: 0 }} xs={12} sm={12} md={12}>
+                        <div className={this.state.cHam ? "sideNav hideSideNav" : "sideNav"}  >
+                        <div style={{width:"inherit",display:"flex",flexDirection:"row-reverse"}}>
+                                <div className={!this.state.cHam ? "sidenavHam  change" : "sidenavHam" } onClick={() => this.changeHam()} >
+                                <div className="bar1"></div>
+                                <div className="bar2"></div>
+                                <div className="bar3"></div>
+                            </div>       
+                        </div>
+                            {
+                                items.map((item) => {
+
+                                    return (
+                                        <NavItem
+                                            path={item.path}
+                                            name={item.name}
+                                            css={item.css}
+                                            onItemClick={this.onItemClick}
+                                            active={item.path === activePath}
+                                            key={item.key}
+                                        />
+                                    )
+                                })
+                            }
+
+
+
+                        </div>
+                        asd
+                    </Col>
+                </Row>
+                
+            </Container>
         )
     }
 }
 
 
 export default withRouter(SideNav);
+
+
+
+        //         {
+        //           items.map((item) => {
+        //               console.log(item.path)
+        //               console.log(activePath)
+        //               console.log(item.path === activePath)
+        //                 return (
+        //                      <NavItem 
+        //                         path={item.path} 
+        //                         name={item.name} 
+        //                         css={item.css} 
+        //                         onItemClick={this.onItemClick} 
+        //                         active={item.path === activePath} 
+        //                         key={item.key}
+        //                     /> 
+        //                 ) 
+        //     })
+        // }
+
+            

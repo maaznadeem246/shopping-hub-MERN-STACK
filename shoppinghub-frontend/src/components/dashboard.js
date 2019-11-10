@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import SideNav from "./sidenav.js"
 
-class Account extends Component {
+class Dashboard extends Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class Account extends Component {
     }
 }
 
-export default Account;
+export default Dashboard;

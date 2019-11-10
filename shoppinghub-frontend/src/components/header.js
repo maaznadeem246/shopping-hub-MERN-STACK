@@ -55,7 +55,7 @@ class Header extends Component {
                             </Form>
                             <div className="iconcss">
                             {
-                                this.state.signedIn && <LinkContainer to="/account"  ><NavItem className="profile icon"></NavItem></LinkContainer>
+                                this.state.signedIn && <LinkContainer to="/dashboard"  ><NavItem className="profile icon"></NavItem></LinkContainer>
 
                             }
                             </div>
@@ -83,7 +83,7 @@ class Header extends Component {
                                 this.state.signedIn && <LinkContainer to="/signup"><NavItem className="navitemcss">Sign Up</NavItem></LinkContainer>
                             }
                             {
-                                this.state.user && <LinkContainer to={"/" + this.state.user.account}><NavItem className="navitemcss">{(this.state.user.account).charAt(0).toUpperCase() + (this.state.user.account).slice(1)}</NavItem></LinkContainer>
+                                this.state.user && <LinkContainer to={"/" + this.state.user.dashboard}><NavItem className="navitemcss">{(this.state.user.dashboard).charAt(0).toUpperCase() + (this.state.user.dashboard).slice(1)}</NavItem></LinkContainer>
                             }
                             
 
