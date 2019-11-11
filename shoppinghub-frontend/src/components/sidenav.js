@@ -1,4 +1,4 @@
-import '../css/account.css'
+import '../css/dashboard.css'
 import React, { Component } from 'react';
 import styled from "styled-components"
 import {Link, BrowserRouter, Route, Switch, withRouter} from "react-router-dom"
@@ -12,24 +12,31 @@ import { Container, Row, Col } from 'react-bootstrap'
 // css for nav items 'NavItem' component
 const StyledNavItem = styled.div`
      
-  text-align: left; /* Aligns <a> inside of NavIcon div */
-    width:inherit;
+
+    width:100%;
     
+        .profile-solid.icon{
+        color: ${(props) => !props.active ? "white" : "#3b945E"};
+        } 
   a {
-    display:block;
+    display:inline-flex;
 
     padding-left:10px;
     font-size: 1.2em;
+    
     color: ${(props) => !props.active ? "white" : "#3b945E"};
-  
+    
       background-color:${(props) => !props.active ? "#3b945E" : "white"  };
         width:inherit;
     padding-top:7px;
     padding-bottom:7px;
+    transition:0.2s;
     :hover {
       opacity: ${(props) => props.active ? 1 : 0.7  };
       text-decoration: none; /* Gets rid of underlining of icons */
-    }  
+    }
+    :active 
+    } 
   }
 `;
 
@@ -44,9 +51,13 @@ class NavItem extends Component{
         const {active} = this.props;
         console.log(this.props)
         return(
-            <StyledNavItem active={active}>
-                {/* <div class="profile-solid icon"></div> */}
-                <Link to={this.props.path} className={this.props.css} onClick={this.handleClick}>{this.props.name}</Link>
+            <StyledNavItem    active={active}>
+                <Link to={this.props.path}  onClick={this.handleClick}>
+                    <div className={this.props.cHam ? "sidenavHideLinksCss" : "" }>
+                        <div className="profile-solid icon"  ></div>
+                        <div className="sidnavItemsName">{!this.props.cHam && <span> {this.props.name} </span>}</div> 
+                        </div>
+                </Link>
             </StyledNavItem>
         )
     }
@@ -95,9 +106,9 @@ class SideNav extends Component {
                 <Row >
 
                     <Col style={{ padding: 0 }} xs={12} sm={12} md={12}>
-                        <div className={this.state.cHam ? "sideNav hideSideNav" : "sideNav"}  >
-                        <div style={{width:"inherit",display:"flex",flexDirection:"row-reverse"}}>
-                                <div className={!this.state.cHam ? "sidenavHam  change" : "sidenavHam" } onClick={() => this.changeHam()} >
+                        <div className={this.state.cHam ? "sideNav hideSideNav" : "sideNav"}   >
+                        <div style={{width:"100%",display:"flex",flexDirection:"row-reverse"}}>
+                                <div  className={!this.state.cHam ? "sidenavHam  change" : "sidenavHam"} style={this.state.cHam ? { marginRight: "auto", marginLeft: "auto" } : {}} onClick={() => this.changeHam()} >
                                 <div className="bar1"></div>
                                 <div className="bar2"></div>
                                 <div className="bar3"></div>
@@ -114,6 +125,7 @@ class SideNav extends Component {
                                             onItemClick={this.onItemClick}
                                             active={item.path === activePath}
                                             key={item.key}
+                                            cHam={this.state.cHam}
                                         />
                                     )
                                 })

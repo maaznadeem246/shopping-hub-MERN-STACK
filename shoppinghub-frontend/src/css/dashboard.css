@@ -2,6 +2,7 @@
   display: inline-block;
   cursor: pointer;
     padding: 10px;
+
 }
 
 .bar1, .bar2, .bar3 {
@@ -11,8 +12,16 @@
   background-color:white;
   margin: 6px 0;
   transition: 0.4s;
+
 }
 
+
+.change{
+  -webkit-animation: KEYFRAME-NAME 0.5s normal;
+  -moz-animation:    KEYFRAME-NAME 0.5s normal;
+  -o-animation:      KEYFRAME-NAME 0.5s normal;
+  animation:         KEYFRAME-NAME 0.5s normal;
+}
 .change .bar1 {
   -webkit-transform: rotate(-45deg) translate(-7px, 6px);
   transform: rotate(-45deg) translate(-7px, 6px);
@@ -28,27 +37,29 @@
 .sideNav{
             padding: 0;
             height: 100%;
-            width: 250px;
+            width: 20%;
             position: fixed;
             z-index: 1;
             top: 0;
             left: 0;
             background-color: #3b945E;
             overflow-x: hidden;
-            transition: 0.5s;
+            transition: 0.4s;
             padding-top: 120px;
 }
 
 .hideSideNav{
-    width:60px;
+    width:5%;
     content: none;
+
 }
+
 
 
 
 .profile-solid.icon {
 
-  color: #000;
+  color: whitesmoke;
   position: absolute;
   margin-left: 3px;
   margin-top: 11px;
@@ -74,3 +85,50 @@
   background-color: currentColor;
 }
 
+
+.sidnavItemsName{
+  display: inline-block;
+  margin-left:30px;
+  height: inherit;
+
+
+}
+
+.sidnavItemsName > span{
+      -webkit-animation: KEYFRAME-NAME 0.5s normal;
+  -moz-animation:    KEYFRAME-NAME 0.5s normal;
+  -o-animation:      KEYFRAME-NAME 0.5s normal;
+  animation:         KEYFRAME-NAME 0.5s normal;
+}
+
+.sidenavHideLinksCss{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+
+
+.element {
+  -webkit-animation: KEYFRAME-NAME 0.5s normal;
+  -moz-animation:    KEYFRAME-NAME 0.5s normal;
+  -o-animation:      KEYFRAME-NAME 0.5s normal;
+  animation:         KEYFRAME-NAME 0.5s linear;
+}
+
+@-webkit-keyframes KEYFRAME-NAME {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes KEYFRAME-NAME {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes KEYFRAME-NAME {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes KEYFRAME-NAME {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
