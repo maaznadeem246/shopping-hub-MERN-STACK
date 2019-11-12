@@ -53,13 +53,15 @@ class Header extends Component {
                                 <FormControl type="text" placeholder="Product Name" className="navseachinput mr-sm-2" />
                                 <Button className="navsearchbutton" >Search</Button>
                             </Form>
+                            <div className="headerIconsCss">
                             <div className="iconcss">
                             {
                                 this.state.signedIn && <LinkContainer to="/dashboard"  ><NavItem className="profile icon"></NavItem></LinkContainer>
 
                             }
                             </div>
-                            <LinkContainer to="/cart"  ><NavItem className="iccart">
+                            <LinkContainer to="/cart"  >
+                                <NavItem className="iccart">
                                 <div class="icon-cart">
                                     <div class="notificacao">0</div>
                                     <div class="cart-line-1" ></div>
@@ -68,8 +70,11 @@ class Header extends Component {
                                     <div class="cart-wheel" ></div>
                                 </div>
 
-                            </NavItem></LinkContainer>
+                                </NavItem>
+                            </LinkContainer>
+                            </div>
                         </Nav>
+                        
                         <Nav className="navscss justify-content-start">
                             <LinkContainer to="/"   ><NavItem className="navitemcss" >Home</NavItem></LinkContainer>
                             <LinkContainer to="/aboutus"   ><NavItem className="navitemcss" >About Us</NavItem></LinkContainer>

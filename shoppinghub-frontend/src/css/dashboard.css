@@ -48,6 +48,9 @@
             padding-top: 120px;
 }
 
+
+
+
 .hideSideNav{
     width:5%;
     content: none;
@@ -84,6 +87,103 @@
   border: solid 1px currentColor;
   background-color: currentColor;
 }
+
+.order.icon {
+  color: white;
+  background-color: currentColor;
+  position: absolute;
+  margin-left: 4px;
+  margin-top: 3px;
+  width: 16px;
+  height: 22px;
+  border-radius: 2px;
+  border: solid 1px currentColor;
+}
+
+.order.icon:before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 3px;
+  width: 12px;
+  height: 5px;
+  background-color: wihte;
+  border-bottom: solid 1.4px #3b945E;
+  border-top: solid 1.4px #3b945E;
+}
+
+.order.icon:after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  height: 2px;
+  width: 2px;
+  border-radius: 50%;
+  background-color: #3b945E;
+}
+
+.salesReporting.icon{
+    color: white;
+  background-color: currentColor;
+  position: absolute;
+  margin-left: 4px;
+  margin-top: 3px;
+  width: 16px;
+  height: 22px;
+  border-radius: 2px;
+  border: solid 1px currentColor;
+}
+
+
+.salesReporting.icon:before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  bottom: 3px;
+  width: 6px;
+  height: 13px;
+  background-color: wihte;
+  border-right: solid 2px #3b945E;
+  border-left: solid 2px #3b945E;
+   
+
+}
+
+.salesReporting.icon:after {
+    content: '';
+  position: absolute;
+  right: 2px;
+  bottom: 3px;
+  width: 2px;
+  height: 8px;
+  background-color: wihte;
+  border-right: solid 2px #3b945E;
+
+}
+
+.product.icon{
+  content: "";
+  width:15px;
+  height:15px;
+  position: absolute;
+  margin-left: 5px;
+  margin-top: 7px;
+  border-radius: 2px; 
+  background-color: white;
+  border: solid 1.5px white;
+  transform: rotate(50deg);
+}
+
+/* .product.icon:after{
+  content: "";
+  width:7px;
+  height:15px;
+  background-color: white;
+  position: absolute;
+   transform: rotate(-50deg);
+  margin-top:10px;
+} */
 
 
 .sidnavItemsName{
@@ -131,4 +231,33 @@
 @keyframes KEYFRAME-NAME {
   0%   { opacity: 0; }
   100% { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px){
+  .sideNav{
+    width:100%;
+    padding-top: 55px;
+    overflow-y: scroll;
+  }
+  .hideSideNav{
+    width:14%;
+  }
+
+  .bar1, .bar2, .bar3 {
+    width: 26px;
+  }
+
+  .sideNav div>a{
+    padding-left:10px;
+
+}
+
 }

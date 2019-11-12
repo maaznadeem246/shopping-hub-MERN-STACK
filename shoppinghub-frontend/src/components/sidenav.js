@@ -17,7 +17,37 @@ const StyledNavItem = styled.div`
     
         .profile-solid.icon{
         color: ${(props) => !props.active ? "white" : "#3b945E"};
-        } 
+        }
+        .order.icon{
+            color: ${(props) => !props.active ? "white" : "#3b945E"};
+            :before{
+                border-bottom: solid 1.4px ${(props) => props.active ? "white" : "#3b945E"};;
+                border-top: solid 1.4px ${(props) => props.active ? "white" : "#3b945E"};;
+               
+            }
+            :after{
+                background-color: ${(props) => props.active ? "white" : "#3b945E"};
+            }
+        }
+        
+        .salesReporting.icon{
+            border: solid 1px #3b945E;
+            background-color: ${(props) => !props.active ? "white" : "#3b945E"};
+            :before{
+                border-right: solid 2px ${(props) => props.active ? "white" : "#3b945E"};
+                border-left: solid 2px ${(props) => props.active ? "white" : "#3b945E"};
+               
+            }
+            :after{
+                border-right: solid 2px ${(props) => props.active ? "white" : "#3b945E"};;
+
+            }
+        }
+        .product.icon{
+            background-color: ${(props) => !props.active ? "white" : "#3b945E"};
+            border: ${(props) => !props.active ? "white" : "#3b945E"};
+        }
+
   a {
     display:inline-flex;
 
@@ -28,9 +58,10 @@ const StyledNavItem = styled.div`
     
       background-color:${(props) => !props.active ? "#3b945E" : "white"  };
         width:inherit;
+        border-bottom:1px solid white;
     padding-top:7px;
     padding-bottom:7px;
-    transition:0.2s;
+    transition:0.1s;
     :hover {
       opacity: ${(props) => props.active ? 1 : 0.7  };
       text-decoration: none; /* Gets rid of underlining of icons */
@@ -54,7 +85,7 @@ class NavItem extends Component{
             <StyledNavItem    active={active}>
                 <Link to={this.props.path}  onClick={this.handleClick}>
                     <div className={this.props.cHam ? "sidenavHideLinksCss" : "" }>
-                        <div className="profile-solid icon"  ></div>
+                        <div className={this.props.proiconcss}  ></div>
                         <div className="sidnavItemsName">{!this.props.cHam && <span> {this.props.name} </span>}</div> 
                         </div>
                 </Link>
@@ -69,20 +100,37 @@ class SideNav extends Component {
         super(props);
         this.state = {
             activePath: props.location.pathname,
-            cHam:false,
+            cHam:true,
 
             items: [
                 {
                     path: '/dashboard/profile', /* path is used as id to check which NavItem is active basically */
                     name: 'Profile',
                     css: '',
+                    proiconcss: "profile-solid icon",
                     key: 1 /* Key is required, else console throws error. Does this please you Mr. Browser?! */
                 }, {
                     path: '/dashboard/product',
                     name: 'Products',
                     css: '',
+                    proiconcss: "product icon",
                     key: 2
+                },
+                , {
+                    path: '/dashboard/orders',
+                    name: 'Orders',
+                    css: '',
+                    proiconcss: "order icon",
+                    key: 3
                 }
+                , {
+                    path: '/dashboard/sales-report',
+                    name: 'Sales Report',
+                    css: '',
+                    proiconcss: "salesReporting icon",
+                    key: 4
+                },
+                
             ]
         }
     }
@@ -126,6 +174,7 @@ class SideNav extends Component {
                                             active={item.path === activePath}
                                             key={item.key}
                                             cHam={this.state.cHam}
+                                            proiconcss={item.proiconcss}
                                         />
                                     )
                                 })
