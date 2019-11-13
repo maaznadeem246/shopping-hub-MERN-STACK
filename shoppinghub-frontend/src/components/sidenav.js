@@ -64,6 +64,7 @@ const StyledNavItem = styled.div`
     transition:0.1s;
     :hover {
       opacity: ${(props) => props.active ? 1 : 0.7  };
+              border-bottom:1px solid white;
       text-decoration: none; /* Gets rid of underlining of icons */
     }
     :active 

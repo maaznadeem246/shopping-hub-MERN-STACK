@@ -172,15 +172,18 @@ class Signup extends Component {
             <div>   
                 <Container fluid={true}>
                     <Row>
-                        <Col xs={12} sm={12} md={3} lg={3}></Col>
-                        <Col xs={12} sm={12} md={6} lg={6}>
+                        <Col xs={12} sm={12} md={2} lg={1}></Col>
+                        <Col xs={12} sm={12} md={8} lg={10}>
                             <Container>
-                                <Row>
-                                    <Col>
-                                        <Form className="signUpformCss" noValidate onSubmit={this.formSubmit}>
-                                            <div className=" signUpCssHead ">
-                                                Sign Up
+                                <Row className="signinrowcss">
+                                    <Col xs={12} sm={12} md={12} lg={6}>
+                                        <div className=" signUpCssHead ">
+                                            Sign Up
                                         </div>
+                                    </Col>
+                                    <Col xs={12} sm={12} md={12} lg={6}>
+                                        <Form className="signUpformCss" noValidate onSubmit={this.formSubmit}>
+                                            
                                             <Form.Text style={this.state.error.ers && { background: '#f8d7da' , display:'block' }} className="signUpDFS fade-in text-muted">
                                                 {this.state.error.ers && this.state.error.ers}
                                             </Form.Text>
@@ -296,15 +299,13 @@ class Signup extends Component {
                                             </Container>
                                             </Form.Group>
                                             
-                                                <Form.Group className="text-center">
+                                                <Form.Group className="text-justify formbutalink">
                                                 <Button className="signUpSubmitButton "   type="submit">
                                                     Register
                                                 </Button>
-                                                
-                                                </Form.Group>
-                                                <Form.Group className='text-center'>
                                                     <Link to="/signin" className="signLink">Sign In !</Link>
                                                 </Form.Group>
+
                                             </div>
                                         </Form>
                                         
@@ -312,7 +313,7 @@ class Signup extends Component {
                                 </Row>
                             </Container>
                         </Col>
-                        <Col xs={12} sm={12} md={3} lg={3}></Col>
+                        <Col xs={12} sm={12} md={2} lg={1}></Col>
                     </Row>
                 </Container>
             </div>

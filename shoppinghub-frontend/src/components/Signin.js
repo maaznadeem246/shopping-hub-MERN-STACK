@@ -115,16 +115,19 @@ class Signin extends Component {
         return (
             <div>
                 <Container fluid={true}>
-                    <Row>
-                        <Col xs={12} sm={12} md={3} lg={4}></Col>
-                        <Col xs={12} sm={12} md={6} lg={4}>
+                    <Row >
+                        <Col xs={12} sm={12} md={2} lg={1} ></Col>
+                        <Col xs={12} sm={12} md={8} lg={10}>
                             <Container>
-                                <Row>
-                                    <Col>
+                                <Row className="signinrowcss">
+                                    <Col xs={12} sm={12} md={12} lg={6}>
+                                        <div className=" signUpCssHead ">
+                                            Sign In
+                                        </div> 
+                                    </Col>
+                                    <Col xs={12} sm={12} md={12} lg={6}>
                                         <Form className="signInformCss" noValidate onSubmit={this.formSubmit}>
-                                            <div className=" signInCssHead ">
-                                                Sign In
-                                            </div>
+                                            
                                             <Form.Text style={this.state.error.ers && { background: '#f8d7da',display:'block' }} className="signInDFS fade-in text-muted ">
                                                 {this.state.error.ers && this.state.error.ers}
                                             </Form.Text>
@@ -158,22 +161,20 @@ class Signin extends Component {
                                                     {this.state.error.erpassword && this.state.error.erpassword}
                                                 </Form.Text>
                                             </Form.Group>
-                                                <Form.Group className="text-center">
+                                                <Form.Group className="text-justify formbutalink">
                                                     <Button className="signInSubmitButton " type="submit">
                                                         Sign In
                                                 </Button>
-
-                                                </Form.Group>
-                                                <Form.Group className='text-center'>
                                                     <Link to="/signup" className="signLink">Sign Up !</Link>
                                                 </Form.Group>
+
                                             </div>
                                         </Form>
                                     </Col>
                                 </Row>
                             </Container>
                         </Col>
-                        <Col xs={12} sm={12} md={3} lg={4}></Col>
+                        <Col xs={12} sm={12} md={2} lg={1} ></Col>
                     </Row>
                 </Container>
             </div>
