@@ -14,7 +14,11 @@ const StyledNavItem = styled.div`
      
 
     width:100%;
-    
+       animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;    
         .profile-solid.icon{
         color: ${(props) => !props.active ? "white" : "#3b945E"};
         }
@@ -81,7 +85,7 @@ class NavItem extends Component{
     }
     render(){
         const {active} = this.props;
-        console.log(this.props)
+        //console.log(this.props)
         return(
             <StyledNavItem    active={active}>
                 <Link to={this.props.path}  onClick={this.handleClick}>
@@ -149,7 +153,7 @@ class SideNav extends Component {
 
     render() {
         const {items, activePath} = this.state
-        console.log(window) 
+        //console.log(window) 
         return (
             <Container style={{ }} fluid={true}>
                 <Row >

@@ -16,9 +16,10 @@ import ContactUs from "./components/contactus"
 import AboutUs from "./components/aboutus"
 import ReturnPolicy from "./components/returnpolicy"
 import Header from "./components/header"
-import dashboard from "./components/dashboard"
+import dashboard from "./containers/dashboardContainer"
 import Authenticate from "./components/authenticate"
 import * as serviceWorker from './serviceWorker';
+import dashboardContainer from './containers/dashboardContainer';
 
 
 
@@ -54,8 +55,8 @@ ReactDOM.render(
                             <Route exact={true} path="/returnpolicy" component={ReturnPolicy} />
                             <Route exact path="/dashboard/profile" component={Profile} />
                             <Route exact path="/dashboard/product" component={Profile} />
-                            <Route exact path="/dashboard" component={Dashboard} />
-                            
+                            <Route exact path="/dashboard" component={dashboardContainer} />
+   
                         </Authenticate>
                     </Switch>
                 </BrowserRouter>

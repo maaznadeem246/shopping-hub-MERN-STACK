@@ -29,7 +29,7 @@ export const signIn = async (dispatch, data) => {
         await console.log(er, "ss")
         await dispatch({
             type: SIGNIN_USER_ERROR,
-            payload: er
+            payload: `Some Problem Occurerd`
         })
     }   
 }

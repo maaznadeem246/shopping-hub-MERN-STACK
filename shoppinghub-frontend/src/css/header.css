@@ -350,6 +350,9 @@ font-size: 0.9em;
 
 
 @media (max-width: 768px) { 
+  .navbarrowscss::before{
+    height:95%;
+}
   .navbarrowscss{
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -385,7 +388,7 @@ font-size: 0.9em;
   }
   .navsearchbutton{
     margin-top:0px;
-         padding:5px 10px 5px 10px; 
+         padding:3px 10px 3px 10px; 
   }
 
   .navitemcss::after{
@@ -394,11 +397,11 @@ font-size: 0.9em;
 
   .navitemcss{
         margin:0rem 0px 0px 0px ;
-    padding:8px 16px 8px 16px;
+    padding:6px 16px 6px 16px;
     border-bottom: 1px solid white;
   }
   .navscss {
-    padding:0px
+    padding:10px 0px 0px 0px;
 }
   .navitemcss:hover{
     

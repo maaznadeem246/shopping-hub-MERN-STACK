@@ -56,18 +56,19 @@ class Header extends Component {
                             <div className="headerIconsCss">
                             <div className="iconcss">
                             {
-                                this.state.signedIn && <LinkContainer to="/dashboard"  ><NavItem className="profile icon"></NavItem></LinkContainer>
-
+                                        this.state.signedIn != true ? <LinkContainer to="/dashboard"  ><NavItem className="profile icon"></NavItem></LinkContainer>
+                                            : <LinkContainer to="/signin" ><NavItem className="profile icon"></NavItem></LinkContainer>                  
                             }
+
                             </div>
                             <LinkContainer to="/cart"  >
                                 <NavItem className="iccart">
-                                <div class="icon-cart">
-                                    <div class="notificacao">0</div>
-                                    <div class="cart-line-1" ></div>
-                                    <div class="cart-line-2" ></div>
-                                    <div class="cart-line-3" ></div>
-                                    <div class="cart-wheel" ></div>
+                                <div className="icon-cart">
+                                    <div className="notificacao">0</div>
+                                    <div className="cart-line-1" ></div>
+                                    <div className="cart-line-2" ></div>
+                                    <div className="cart-line-3" ></div>
+                                    <div className="cart-wheel" ></div>
                                 </div>
 
                                 </NavItem>
@@ -80,7 +81,7 @@ class Header extends Component {
                             <LinkContainer to="/aboutus"   ><NavItem className="navitemcss" >About Us</NavItem></LinkContainer>
                                 <LinkContainer to="/contactus"   ><NavItem className="navitemcss" >Contact Us</NavItem></LinkContainer>
                             <LinkContainer to="/returnpolicy"   ><NavItem className="navitemcss" >Return  Policy</NavItem></LinkContainer>
-                            {
+                            {/* {
                                 this.state.signedIn && <LinkContainer to="/signin" ><NavItem className="navitemcss"> Sign In</NavItem></LinkContainer>
                                    
                             }
@@ -90,7 +91,7 @@ class Header extends Component {
                             {
                                 this.state.user && <LinkContainer to={"/" + this.state.user.dashboard}><NavItem className="navitemcss">{(this.state.user.dashboard).charAt(0).toUpperCase() + (this.state.user.dashboard).slice(1)}</NavItem></LinkContainer>
                             }
-                            
+                             */}
 
                             
 

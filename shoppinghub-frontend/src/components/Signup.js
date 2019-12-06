@@ -175,14 +175,14 @@ class Signup extends Component {
                         <Col xs={12} sm={12} md={2} lg={1}></Col>
                         <Col xs={12} sm={12} md={8} lg={10}>
                             <Container>
-                                <Row className="signinrowcss">
+                                <Row className="fade-in signinrowcss">
                                     <Col xs={12} sm={12} md={12} lg={6}>
                                         <div className=" signUpCssHead ">
                                             Sign Up
                                         </div>
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={6}>
-                                        <Form className="signUpformCss" noValidate onSubmit={this.formSubmit}>
+                                        <Form className=" signUpformCss" noValidate onSubmit={this.formSubmit}>
                                             
                                             <Form.Text style={this.state.error.ers && { background: '#f8d7da' , display:'block' }} className="signUpDFS fade-in text-muted">
                                                 {this.state.error.ers && this.state.error.ers}

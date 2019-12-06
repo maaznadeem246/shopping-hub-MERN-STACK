@@ -19,7 +19,7 @@ class Signin extends Component {
                 ers:null
             }
         }
-    }
+    }   
 
 
     changeHandler = event => {
@@ -27,6 +27,7 @@ class Signin extends Component {
         const error = this.state.error
 
         error[`er${event.target.name}`] = null
+        error[`ers`] = null
 
         this.setState({ [event.target.name]: event.target.value, ['error']: error });
     };
@@ -97,11 +98,11 @@ class Signin extends Component {
             error.erpassword = "Field is required"
 
         } else {
-            if (!(password.length < 10 && password.length >= 6)) {
-                ru = false
-                error.erpassword = "Value length sould be min 6 and max 10"
-                // console.log("Fields are required")
-            }
+            // if (!(password.length < 10 && password.length >= 6)) {
+            //     ru = false
+            //     error.erpassword = "Value length sould be min 6 and max 10"
+            //     // console.log("Fields are required")
+            // }
         }
 
         this.setState({
@@ -116,17 +117,18 @@ class Signin extends Component {
             <div>
                 <Container fluid={true}>
                     <Row >
+                    {console.log(this.props)}
                         <Col xs={12} sm={12} md={2} lg={1} ></Col>
                         <Col xs={12} sm={12} md={8} lg={10}>
                             <Container>
-                                <Row className="signinrowcss">
+                                <Row className=" fade-in signinrowcss">
                                     <Col xs={12} sm={12} md={12} lg={6}>
                                         <div className=" signUpCssHead ">
                                             Sign In
                                         </div> 
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={6}>
-                                        <Form className="signInformCss" noValidate onSubmit={this.formSubmit}>
+                                        <Form className=" signInformCss" noValidate onSubmit={this.formSubmit}>
                                             
                                             <Form.Text style={this.state.error.ers && { background: '#f8d7da',display:'block' }} className="signInDFS fade-in text-muted ">
                                                 {this.state.error.ers && this.state.error.ers}
