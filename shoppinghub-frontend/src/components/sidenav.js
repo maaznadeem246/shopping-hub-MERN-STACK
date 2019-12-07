@@ -61,14 +61,17 @@ const StyledNavItem = styled.div`
     color: ${(props) => !props.active ? "white" : "#3b945E"};
     
       background-color:${(props) => !props.active ? "#3b945E" : "white"  };
+      
         width:inherit;
         border-bottom:1px solid white;
+
     padding-top:7px;
     padding-bottom:7px;
     transition:0.1s;
     :hover {
       opacity: ${(props) => props.active ? 1 : 0.7  };
               border-bottom:1px solid white;
+
       text-decoration: none; /* Gets rid of underlining of icons */
     }
     :active 
@@ -185,10 +188,18 @@ class SideNav extends Component {
                                 })
                             }
 
+                            <StyledNavItem  active={false}>
+                                <Link className="signoutlinkcss" >
+                                    <div className={this.state.cHam ? " sidenavHideLinksCss" : ""}>
+                                        <div className="export icon"  ></div>
+                                        <div className="sidnavItemsName">{!this.state.cHam && <span> Sign out </span>}</div>
+                                    </div>
+                                </Link>
+                            </StyledNavItem>
 
 
                         </div>
-                        asd
+                       
                     </Col>
                 </Row>
                 

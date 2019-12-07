@@ -216,6 +216,56 @@
   animation:         KEYFRAME-NAME 0.5s linear;
 }
 
+
+
+
+/* the icon css for logout */
+
+.export.icon {
+  color: white;
+  position: absolute;
+  margin-left: 4px;
+  margin-top: 6px;
+  width: 14px;
+  height: 20px;
+  border-radius: 1px;
+  background-color: transparent;
+  border: solid 2px currentColor;
+  border-right-color: transparent;
+}
+
+.export.icon:before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left:5px;
+  width: 13px;
+  height: 1px;
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
+  background-color: transparent;
+}
+
+.export.icon:after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px currentColor;
+  border-right: solid 2px currentColor;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+
+
+.signoutlinkcss{
+ border-bottom: 1px solid transparent;
+}
+
+
 @-webkit-keyframes KEYFRAME-NAME {
   0%   { opacity: 0; }
   100% { opacity: 1; }
