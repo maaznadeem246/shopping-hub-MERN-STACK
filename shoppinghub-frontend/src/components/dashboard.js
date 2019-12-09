@@ -4,7 +4,9 @@ import SideNav from "./sidenav.js"
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-        this.state={}
+        this.state={
+            token:''
+        }
 
     }
     static getDerivedStateFromProps(props, state){
@@ -13,12 +15,24 @@ class Dashboard extends Component {
             props.history.push({ pathname: '/signin' })
             console.log('in')
         }
-        return null;
+
+        if(porps.)
+
+        return {
+            token:props.userstoken
+        };
     }
+
+    signOut = () => {
+        console.log(this.state.token)
+        this.props.signOutUser(this.state.token)
+    }
+
+
     render() {
         return (
             <div>
-                <SideNav />
+                <SideNav signOut={this.signOut}/>
             </div>
         )
     }

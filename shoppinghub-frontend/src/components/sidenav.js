@@ -189,7 +189,7 @@ class SideNav extends Component {
                             }
 
                             <StyledNavItem  active={false}>
-                                <Link className="signoutlinkcss" >
+                                <Link className="signoutlinkcss" onClick={()=> this.props.signOut()} >
                                     <div className={this.state.cHam ? " sidenavHideLinksCss" : ""}>
                                         <div className="export icon"  ></div>
                                         <div className="sidnavItemsName">{!this.state.cHam && <span> Sign out </span>}</div>
