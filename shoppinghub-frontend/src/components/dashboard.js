@@ -6,7 +6,7 @@ class Dashboard extends Component {
         super(props);
         this.state={
             token:'',
-            cHam:true,
+            cHam:false,
         }
 
     }

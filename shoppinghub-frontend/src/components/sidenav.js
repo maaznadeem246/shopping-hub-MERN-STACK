@@ -2,7 +2,7 @@ import '../css/dashboard.css'
 import React, { Component } from 'react';
 import styled from "styled-components"
 import {Link, BrowserRouter, Route, Switch, withRouter} from "react-router-dom"
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col,Image } from 'react-bootstrap'
 
 
 
@@ -166,6 +166,11 @@ class SideNav extends Component {
                                 <div className="bar3"></div>
                             </div>       
                         </div>
+                            <div className="profileImagediv " >
+                                {/* <div className="profile-solids icons"> </div> */}
+                                <Image className="profileImage " src={require("../img/test.png")} roundedCircle />
+                            </div>   
+                            <div>
                             {
                                 items.map((item) => {
 
@@ -183,7 +188,7 @@ class SideNav extends Component {
                                     )
                                 })
                             }
-
+                            </div>
                             <StyledNavItem  active={false}>
                                 <Link className="signoutlinkcss" onClick={()=> this.props.signOut()} >
                                     <div className={this.props.cHam ? " sidenavHideLinksCss" : ""}>

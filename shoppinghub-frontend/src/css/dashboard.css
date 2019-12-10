@@ -63,6 +63,8 @@
 
 
 
+
+
 .profile-solid.icon {
 
   color: whitesmoke;
@@ -263,6 +265,59 @@
 
 .signoutlinkcss{
  border-bottom: 1px solid transparent;
+}
+
+
+.profileImagediv{
+
+  text-align:center;
+  height: 140px;
+}
+
+.profileImage{
+  width: 180px;
+    height: 120px;
+}
+
+.profile-solids.icons {
+  display: inline-block;
+  color: whitesmoke;
+  position: relative;
+  margin-left: 3px;
+  margin-top: 40px;
+  
+  width: 59px;
+  height: 40px; 
+  border-left: solid 1px currentColor;
+  border-right: solid 1px currentColor;
+  border-top: solid 1px currentColor;
+  border-bottom: solid 1px transparent;
+  background-color: currentColor;
+  border-radius: 26px 26px 0 0;
+}
+
+.profile-solids.icons:after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: -50px;
+  width: 42px;
+  height:42px;
+  border-radius: 50%;
+  border: solid 1px currentColor;
+  background-color: currentColor;
+}
+
+.profile-solids.icons:before{
+  content: '';
+  width:150px;
+  height:150px;
+  z-index:-1;
+    position: absolute;
+     top:-75px;
+     right:-45px;
+     border-radius: 100%;
+  background-color: rgb(212, 212, 212);
 }
 
 
