@@ -53,7 +53,7 @@ class Signup extends Component {
     }
 
     UNSAFE_componentWillMount(){
-        if (this.props.userstoken != null && this.props.userstoken != undefined) {
+        if (this.props.userstoken != null) {
             this.props.history.push({ pathname: '/' })
             console.log('in')
         } else if (this.props.userData['token'] && (this.props.userstoken == null || this.props.userstoken == undefined)) {

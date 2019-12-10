@@ -51,7 +51,7 @@ class Signin extends Component {
 
     UNSAFE_componentWillMount() {
         console.log(this.props)
-        if (this.props.userstoken != null && this.props.userstoken != undefined) {
+        if (this.props.userstoken != null ) {
             this.props.history.push({ pathname: '/' })
             console.log('in')
         } else if (this.props.userData['token'] && (this.props.userstoken == null || this.props.userstoken == undefined)) {
@@ -117,7 +117,7 @@ class Signin extends Component {
             <div>
                 <Container fluid={true}>
                     <Row >
-                    {console.log(this.props)}
+
                         <Col xs={12} sm={12} md={2} lg={1} ></Col>
                         <Col xs={12} sm={12} md={8} lg={10}>
                             <Container>

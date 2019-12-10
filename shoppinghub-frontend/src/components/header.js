@@ -22,7 +22,7 @@ class Header extends Component {
     
     UNSAFE_componentWillReceiveProps(props){
         console.log(props)
-        if (props.token != null && props.token != undefined && this.state.token == null) {
+        if ((props.token != null && props.token != undefined) && this.state.token == null) {
             props.userDetails(props.token)
             this.setState({
                 signedIn: false,

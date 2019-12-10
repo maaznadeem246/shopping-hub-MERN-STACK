@@ -148,11 +148,7 @@ class SideNav extends Component {
         }) 
     }
 
-    changeHam = () => {
-        this.setState({
-            cHam:!this.state.cHam
-        })
-    }
+    
 
     render() {
         const {items, activePath} = this.state
@@ -162,9 +158,9 @@ class SideNav extends Component {
                 <Row >
 
                     <Col style={{ padding: 0 }} xs={12} sm={12} md={12}>
-                        <div className={this.state.cHam ? "sideNav hideSideNav" : "sideNav"}   >
+                        <div className={this.props.cHam ? "sideNav hideSideNav" : "sideNav"}   >
                         <div style={{width:"100%",display:"flex",flexDirection:"row-reverse"}}>
-                                <div  className={!this.state.cHam ? "sidenavHam  change" : "sidenavHam"} style={this.state.cHam ? { marginRight: "auto", marginLeft: "auto" } : {}} onClick={() => this.changeHam()} >
+                                <div  className={!this.props.cHam ? "sidenavHam  change" : "sidenavHam"} style={this.props.cHam ? { marginRight: "auto", marginLeft: "auto" } : {}} onClick={() => this.props.changeHam()} >
                                 <div className="bar1"></div>
                                 <div className="bar2"></div>
                                 <div className="bar3"></div>
@@ -181,7 +177,7 @@ class SideNav extends Component {
                                             onItemClick={this.onItemClick}
                                             active={item.path === activePath}
                                             key={item.key}
-                                            cHam={this.state.cHam}
+                                            cHam={this.props.cHam}
                                             proiconcss={item.proiconcss}
                                         />
                                     )
@@ -190,9 +186,9 @@ class SideNav extends Component {
 
                             <StyledNavItem  active={false}>
                                 <Link className="signoutlinkcss" onClick={()=> this.props.signOut()} >
-                                    <div className={this.state.cHam ? " sidenavHideLinksCss" : ""}>
+                                    <div className={this.props.cHam ? " sidenavHideLinksCss" : ""}>
                                         <div className="export icon"  ></div>
-                                        <div className="sidnavItemsName">{!this.state.cHam && <span> Sign out </span>}</div>
+                                        <div className="sidnavItemsName">{!this.props.cHam && <span> Sign out </span>}</div>
                                     </div>
                                 </Link>
                             </StyledNavItem>
