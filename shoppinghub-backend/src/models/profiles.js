@@ -31,7 +31,7 @@ const profileSchema = mongoose.Schema({
         }
     }],
     avatar: {
-        type: Buffer,
+        type: Buffer,        
         required:false
     },
     account:{

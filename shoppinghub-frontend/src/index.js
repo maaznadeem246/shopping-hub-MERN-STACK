@@ -27,7 +27,7 @@ const store = createStore(rootReducer,applyMiddleware(thunk))
 
 const Profile = () => (
     <div>
-
+        Profile
     </div>
 )
 
@@ -46,17 +46,17 @@ ReactDOM.render(
                 <Header />
                     <Switch>
                         <Route exact={true}  path="/" component={HomeContainer}/>
+                    <Route exact={true} path="/signin" component={SigninContainer} />
+                    <Route exact={true} path="/signup" component={SignupContainer} />
                         <Authenticate>
-                            <Route exact={true} path="/signin" component={SigninContainer}/>
-                            <Route  exact={true} path="/signup" component={SignupContainer}/>
-                            <Route  path="/dashboard" component={dashboard} />
+                                
                             <Route exact={true} path="/aboutus" component={AboutUs} />
                             <Route exact={true} path="/contactus" component={ContactUs} />
                             <Route exact={true} path="/returnpolicy" component={ReturnPolicy} />
-                            <Route exact path="/dashboard/profile" component={Profile} />
-                            <Route exact path="/dashboard/product" component={Profile} />
-                            <Route exact path="/dashboard" component={dashboardContainer} />
-   
+                            <Route  path="/dashboard" component={dashboardContainer} />
+                            
+                            
+    
                         </Authenticate>
                     </Switch>
                 </BrowserRouter>

@@ -21,8 +21,8 @@ class Header extends Component {
     }
     
     UNSAFE_componentWillReceiveProps(props){
-        console.log(props)
-        if ((props.token != null && props.token != undefined) && this.state.token == null) {
+        //console.log(props)
+        if ((props.token != null ) && this.state.token == null) {
             props.userDetails(props.token)
             this.setState({
                 signedIn: false,
@@ -111,7 +111,7 @@ function mapStateToProps(state){
     return {
         user: state.user.userData,
         pending: state.user.pending,
-        token: state.user.userData.token
+        token: state.user.userToken
     }
 }
  

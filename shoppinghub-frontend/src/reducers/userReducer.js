@@ -2,14 +2,15 @@ import { USER_TOKEN, USER_DETAILS_R_SENT, USER_DETAILS_R_RECIEVED, USER_DETAILS_
 
 const initialState = {
     pending:false,
-    userData: { token: null},
+    userData: { },
+    userToken:null,
     error : null,
 }
 
 export default function (state = initialState, action){
     switch (action.type) {
         case USER_TOKEN:
-            return {...state,  userData:{token:action.payload} }
+            return { ...state, userToken:action.payload }
         case USER_DETAILS_R_SENT:
             return { ...state, pending: true}
         case USER_DETAILS_R_RECIEVED:

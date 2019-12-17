@@ -7,6 +7,8 @@ class Dashboard extends Component {
         this.state={
             token:'',
             cHam:false,
+            userD:null,
+            path:this
         }
 
     }
@@ -20,31 +22,40 @@ class Dashboard extends Component {
     static getDerivedStateFromProps(props, state){
         console.log(props)
         props.userToken();
+
+
         if (props.signedOutUser.signedout) {
             console.log(props.signedOutUser)
-            localStorage.removeItem('autt')
-            
+            localStorage.removeItem('autt')   
             props.signedOut();
             props.history.push('/')
          }
-       
+        
         if (props.userstoken == null) {
             props.history.push({ pathname: '/signin' })
-          //  console.log('in')
+            // console.log('in')
         }
         
-       
+        
 
+        if(props.usersToken != state.token){
 
-        return {
-            token: props.userstoken
-        };
-    
+            return {
+                token: props.userstoken,
+                userD :props.userD.name       
+            };
+        }
 
+        return null;
     }
 
+    componentDidMount(){
+       // this.props.userDetails(this.state.token)
+    }
+
+
     signOut = () => {
-        //console.log(this.state.token)
+        console.log(this.state.token)
         this.props.signOutUser(this.state.token)
     }
 
@@ -52,8 +63,9 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <SideNav signOut={this.signOut} cHam={this.state.cHam} changeHam={this.changeHam}/>
-                
+                {console.log(this.props)}
+                <SideNav signOut={this.signOut} name={this.state.userD} cHam={this.state.cHam} changeHam={this.changeHam}/>
+                                    
             </div>
         )
     }

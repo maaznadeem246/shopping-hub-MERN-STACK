@@ -54,11 +54,12 @@ class Signin extends Component {
         if (this.props.userstoken != null ) {
             this.props.history.push({ pathname: '/' })
             console.log('in')
-        } else if (this.props.userData['token'] && (this.props.userstoken == null || this.props.userstoken == undefined)) {
+        }else if (this.props.userData['token']) {
             localStorage.setItem('autt', this.props.userData['token'])
             this.props.history.push({ pathname: '/' })
             console.log('in')
         }
+        this.props.userToken();
     }
 
 
@@ -70,9 +71,10 @@ class Signin extends Component {
                 error: { ...er, ers: props.error }
             })
         }
-        if (props.userstoken != null && props.userstoken != undefined){
+        if (props.userstoken != null ){
             props.history.push({ pathname: '/' })
-        }else if (props.userData['token'] && (props.userstoken == null || props.userstoken == undefined)) {
+        }
+        else if (props.userData['token']) {
             localStorage.setItem('autt', props.userData['token'])
             props.history.push({ pathname: '/' })
         }

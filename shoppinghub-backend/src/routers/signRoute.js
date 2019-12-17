@@ -50,7 +50,7 @@ routes.post('/signin', async (req, res) => {
 routes.post('/profile/signout', auth, async (req, res) => {
     try {
         const { profile, token } = req
-  
+        
         profile.tokens = profile.tokens.filter((t) => t.token !== token)
         await profile.save()
         res.send({profile,"signedout":true})

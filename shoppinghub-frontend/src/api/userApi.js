@@ -11,7 +11,7 @@ const userTDeails = async (dispatch, token) => {
         }})
 
         const jsonData = await getTheUserData.json()
-      //  await console.log(jsonData)
+        
         if (jsonData.error) {
             await dispatch({
                 type: USER_DETAILS_ERROR,
@@ -29,7 +29,7 @@ const userTDeails = async (dispatch, token) => {
         //check later for this dispatch
         await dispatch({
             type: USER_DETAILS_ERROR,
-            payload: er
+            payload: `${er}`
         })
     }
 }

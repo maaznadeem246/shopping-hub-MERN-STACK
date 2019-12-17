@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
         userData: state.signInUser.userData,
         pending: state.signInUser.pending,
         error: state.signInUser.error,
-        userstoken:state.user.userData.token
+        userstoken:state.user.userToken
     }
 }
 

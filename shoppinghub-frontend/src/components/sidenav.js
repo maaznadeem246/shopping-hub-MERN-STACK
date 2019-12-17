@@ -8,10 +8,65 @@ import { Container, Row, Col,Image } from 'react-bootstrap'
 
 
 
+const ProfileI = styled.div`
+
+
+  display: inline-block;
+  color: whitesmoke;
+  position: relative;
+  margin-left: 3px;
+  margin-top: 40px;
+  
+  width: ${(props) => props.active ? "19px" : "59px"};
+  height:  ${(props) => props.active ? "10px" : "40px"}; 
+  border-left: solid 1px currentColor;
+  border-right: solid 1px currentColor;
+  border-top: solid 1px currentColor;
+  border-bottom: solid 1px transparent;
+  background-color: currentColor;
+  border-radius: 26px 26px 0 0;
+
+
+:after {
+  content: '';
+  position: absolute;
+  left: ${(props) => props.active ? "2px" : "5px"};;
+  top: ${(props) => props.active ? "-10px" : "-50px"};;
+  width: ${(props) => props.active ? "12px" : "42px"};;
+  height:${(props) => props.active ? "12px" : "42px"};;
+  border-radius: 50%;
+  border: solid 1px currentColor;
+  background-color: currentColor;
+}
+
+:before{
+  content: '';
+  width:${(props) => props.active ? "50px" : "150px"};;
+  height:${(props) => props.active ? "50px" : "150px"};;
+  z-index:-1;
+    position: absolute;
+     top:${(props) => props.active ? "-25px" : "-75px"};;
+     right:${(props) => props.active ? "-15px" : "-45px"};;
+     border-radius: 100%;
+  background-color: rgb(212, 212, 212);
+}
+
+@media (max-width: 768px){
+    :before{
+    width:${(props) => props.active ? "40px" : "150px"};
+    height:${(props) => props.active ? "40px" : "150px"};
+     top:${(props) => props.active ? "-20px" : "-75px"};
+     right:${(props) => props.active ? "-10px" : "-45px"};
+    }
+}
+
+
+`
+
+
 
 // css for nav items 'NavItem' component
 const StyledNavItem = styled.div`
-     
 
     width:100%;
        animation: fadeIn ease 1s;
@@ -111,32 +166,33 @@ class SideNav extends Component {
             cHam:true,
 
             items: [
-                {
-                    path: '/dashboard/profile', /* path is used as id to check which NavItem is active basically */
-                    name: 'Profile',
-                    css: '',
-                    proiconcss: "profile-solid icon",
-                    key: 1 /* Key is required, else console throws error. Does this please you Mr. Browser?! */
-                }, {
+                // {
+                //     path: '/dashboard/profile', /* path is used as id to check which NavItem is active basically */
+                //     name: 'Profile',
+                //     css: '',
+                //     proiconcss: "profile-solid icon",
+                //     key: 1 /* Key is required, else console throws error. Does this please you Mr. Browser?! */
+                // },
+                 {
                     path: '/dashboard/product',
                     name: 'Products',
                     css: '',
                     proiconcss: "product icon",
-                    key: 2
+                    key: 1
                 },
                 , {
                     path: '/dashboard/orders',
                     name: 'Orders',
                     css: '',
                     proiconcss: "order icon",
-                    key: 3
+                    key: 2
                 }
                 , {
                     path: '/dashboard/sales-report',
                     name: 'Sales Report',
                     css: '',
                     proiconcss: "salesReporting icon",
-                    key: 4
+                    key: 3
                 },
                 
             ]
@@ -166,10 +222,11 @@ class SideNav extends Component {
                                 <div className="bar3"></div>
                             </div>       
                         </div>
-                            <div className="profileImagediv " >
-                                {/* <div className="profile-solids icons"> </div> */}
-                                <Image className="profileImage " src={require("../img/test.png")} roundedCircle />
-                            </div>   
+                            <Link to='/dashboard/profile'  style={this.props.cHam ? { height: "70px" } : { height: "200px"}} className="profileImagediv " >
+                                <ProfileI active={this.props.cHam} />
+                                {!this.props.cHam && <div className='profilelinkname' > {this.props.name && this.props.name} </div>} 
+                                {/* <Image className="profileImage " src={require("../img/test.png")} roundedCircle /> */}
+                            </Link>   
                             <div>
                             {
                                 items.map((item) => {

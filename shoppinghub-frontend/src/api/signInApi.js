@@ -10,7 +10,7 @@ const headers = {
 export const signIn = async (dispatch, data) => {
     try {
         //console.log(JSON.stringify(data))
-        
+        console.log(api)
         const signInIt = await fetch(`${api}/signin`, { method: 'POST', headers, body: JSON.stringify(data) })
         const jsonData = await signInIt.json()
         //await console.log(jsonData)
