@@ -55,17 +55,17 @@ class Signup extends Component {
     UNSAFE_componentWillMount(){
         if (this.props.userstoken != null) {
             this.props.history.push({ pathname: '/' })
-            console.log('in')
+            //console.log('in')
         } else if (this.props.userData['token'] && (this.props.userstoken == null || this.props.userstoken == undefined)) {
             localStorage.setItem('autt', this.props.userData['token'])
             this.props.history.push({ pathname: '/' })
-            console.log('in')
+            //console.log('in')
         }
     }
 
 
     UNSAFE_componentWillReceiveProps(props){
-        console.log(props)
+        //console.log(props)
         const er = this.state.error
         if(props.error){
                this.setState({
@@ -74,11 +74,11 @@ class Signup extends Component {
         }
         if (props.userstoken != null && props.userstoken != undefined) {
             props.history.push({ pathname: '/' })
-            console.log('in')
+            //console.log('in')
         } else if (props.userData['token'] && (props.userstoken == null || props.userstoken == undefined)) {
             localStorage.setItem('autt', props.userData['token'])
             props.history.push({ pathname: '/' })
-            console.log('in')
+            //console.log('in')
         }
         this.props.userToken();
     }

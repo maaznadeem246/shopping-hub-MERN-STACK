@@ -20,12 +20,12 @@ class Dashboard extends Component {
     }
 
     static getDerivedStateFromProps(props, state){
-        console.log(props)
+        //console.log(props)
         props.userToken();
 
 
         if (props.signedOutUser.signedout) {
-            console.log(props.signedOutUser)
+            //console.log(props.signedOutUser)
             localStorage.removeItem('autt')   
             props.signedOut();
             props.history.push('/')
@@ -55,7 +55,7 @@ class Dashboard extends Component {
 
 
     signOut = () => {
-        console.log(this.state.token)
+        //console.log(this.state.token)
         this.props.signOutUser(this.state.token)
     }
 
@@ -63,7 +63,6 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                {console.log(this.props)}
                 <SideNav signOut={this.signOut} name={this.state.userD} cHam={this.state.cHam} changeHam={this.changeHam}/>
                                     
             </div>

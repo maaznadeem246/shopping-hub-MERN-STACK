@@ -9,43 +9,62 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            signedIn:true,
+            signedIn:false,
             token:null,
             user:undefined
         }
     }
 
-    UNSAFE_componentWillMount(){
-        this.props.userToken();
-        
-    }
-    
-    UNSAFE_componentWillReceiveProps(props){
-        console.log(props)
-        console.log(this.state)
-        if (props.token != null && this.state.token == null) {
+
+    static getDerivedStateFromProps(props, state) {
+        props.userToken();
+        //console.log(props)
+        if (props.token != null ) {
             //props.userDetails(props.token)
-            this.setState({
-                signedIn: false,
+            //console.log("in")
+            return {
+                signedIn:true,
                 token: props.token
-            })
-        }else{
-            if (props.signedOut ) {
-                this.setState({
-                    signedIn: true,
-                    token:null,
-                })
             }
         }
 
+         return {
+                signedIn:props.signedOut,
+            }
+       
+
+    }
+
+    // UNSAFE_componentWillMount(){
+    //     this.props.userToken();
+
+        
+    // }
+    
+    // UNSAFE_componentWillReceiveProps(props){
+        
+    //     if (props.token != null && this.state.token == null && !props.signedOut) {
+    //         //props.userDetails(props.token)
+    //         this.setState({
+    //             signedIn: true,
+    //             token: props.token
+    //         })
+    //     }else {
+    //         this.setState({
+    //             signedIn: false,
+    //             token: null,
+    //         })
+    //     }
         
 
-        if (props.user._id != null && props.user._id != undefined){
-            this.setState({
-                user:props.user
-            })
-        }
-    }
+    //     if (props.user._id != null && props.user._id != undefined){
+    //         this.setState({
+    //             user:props.user
+    //         })
+    //     }
+
+    //     console.log(this.state)
+    // }
 
 
 
@@ -67,7 +86,7 @@ class Header extends Component {
                             <div className="headerIconsCss">
                             <div className="iconcss">
                             {
-                                        !this.state.signedIn  ? <LinkContainer to="/dashboard"  ><NavItem className="profile icon"></NavItem></LinkContainer>
+                                        this.state.signedIn  ? <LinkContainer to="/dashboard"  ><NavItem className="profile icon"></NavItem></LinkContainer>
                                             : <LinkContainer to="/signin" ><NavItem className="profile icon"></NavItem></LinkContainer>                  
                             }
 
@@ -121,7 +140,7 @@ function mapStateToProps(state){
    // console.log(state)
     return {
         user: state.user.userData,
-        pending: state.user.pending,
+
         token: state.user.userToken,
         signedOut: state.signOutUser.userData.signedout,
     }

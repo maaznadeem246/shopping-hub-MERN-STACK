@@ -110,7 +110,7 @@ const StyledNavItem = styled.div`
   a {
     display:inline-flex;
 
-    padding-left:10px;
+    padding-left:20px;
     font-size: 1.2em;
     
     color: ${(props) => !props.active ? "white" : "#3b945E"};
@@ -270,23 +270,3 @@ class SideNav extends Component {
 export default withRouter(SideNav);
 
 
-
-        //         {
-        //           items.map((item) => {
-        //               console.log(item.path)
-        //               console.log(activePath)
-        //               console.log(item.path === activePath)
-        //                 return (
-        //                      <NavItem 
-        //                         path={item.path} 
-        //                         name={item.name} 
-        //                         css={item.css} 
-        //                         onItemClick={this.onItemClick} 
-        //                         active={item.path === activePath} 
-        //                         key={item.key}
-        //                     /> 
-        //                 ) 
-        //     })
-        // }
-
-            

@@ -32,6 +32,7 @@ export const signOut = async (dispatch, data) => {
                 type: USER_TOKEN,
                 payload: null,
             })
+            await console.log("dispat")
         }
     } catch (er) {
         await console.log(er, "ss")

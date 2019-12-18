@@ -11,9 +11,9 @@ class Home extends Component {
     }
 
     UNSAFE_componentWillMount(){
-        console.log(this.props.userDetails)
+        //console.log(this.props.userDetails)
         if(this.props.userDetails.userData.token){
-            console.log('in')
+            //console.log('in')
             this.setState({
                 signedUser:this.props.userDetails
             })

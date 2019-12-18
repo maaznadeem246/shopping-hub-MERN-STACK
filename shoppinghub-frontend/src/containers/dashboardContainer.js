@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
     //console.log(state)
     return {
         userD: state.user.userData,
-        //pending: state.user.pending,
+        pending: state.user.pending,
         // error: state.signUpUser.error,
         signedOuterror: state.signOutUser.error,
         signedOutUser:state.signOutUser.userData,
