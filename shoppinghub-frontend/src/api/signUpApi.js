@@ -1,4 +1,4 @@
-import { SIGNUP_USER_R_RECEIVED, SIGNUP_USER_ERROR } from '../constants/constants'
+import { SIGNUP_USER_R_RECEIVED, SIGNUP_USER_ERROR ,USER_TOKEN} from '../constants/constants'
 import {api} from "./apiDetails"
 
 
@@ -22,6 +22,10 @@ const signUp = async (dispatch,data) => {
       await dispatch({
         type:SIGNUP_USER_R_RECEIVED,
         payload:jsonData
+      })
+      await dispatch({
+        type: USER_TOKEN,
+        payload: jsonData.token,
       })
     }
   }catch (er){

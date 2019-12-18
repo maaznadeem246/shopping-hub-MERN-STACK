@@ -2,7 +2,7 @@ import { SIGNOUT_USER_R_SENT, SIGNOUT_USER_R_RECEIVED, SIGNOUT_USER_ERROR } from
 
 const initialState = {
     pending: false,
-    userData: {},
+    userData: {signedout:false},
     error: null,
 }
 

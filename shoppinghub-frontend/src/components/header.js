@@ -21,14 +21,25 @@ class Header extends Component {
     }
     
     UNSAFE_componentWillReceiveProps(props){
-        //console.log(props)
-        if ((props.token != null ) && this.state.token == null) {
-            props.userDetails(props.token)
+        console.log(props)
+        console.log(this.state)
+        if (props.token != null && this.state.token == null) {
+            //props.userDetails(props.token)
             this.setState({
                 signedIn: false,
                 token: props.token
             })
+        }else{
+            if (props.signedOut ) {
+                this.setState({
+                    signedIn: true,
+                    token:null,
+                })
+            }
         }
+
+        
+
         if (props.user._id != null && props.user._id != undefined){
             this.setState({
                 user:props.user
@@ -56,7 +67,7 @@ class Header extends Component {
                             <div className="headerIconsCss">
                             <div className="iconcss">
                             {
-                                        this.state.signedIn != true ? <LinkContainer to="/dashboard"  ><NavItem className="profile icon"></NavItem></LinkContainer>
+                                        !this.state.signedIn  ? <LinkContainer to="/dashboard"  ><NavItem className="profile icon"></NavItem></LinkContainer>
                                             : <LinkContainer to="/signin" ><NavItem className="profile icon"></NavItem></LinkContainer>                  
                             }
 
@@ -107,11 +118,12 @@ class Header extends Component {
 }
 
 function mapStateToProps(state){
-
+   // console.log(state)
     return {
         user: state.user.userData,
         pending: state.user.pending,
-        token: state.user.userToken
+        token: state.user.userToken,
+        signedOut: state.signOutUser.userData.signedout,
     }
 }
  

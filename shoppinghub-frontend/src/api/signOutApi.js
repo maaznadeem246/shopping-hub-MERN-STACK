@@ -1,4 +1,4 @@
-import { SIGNOUT_USER_R_RECEIVED, SIGNOUT_USER_ERROR } from '../constants/constants'
+import { SIGNOUT_USER_R_RECEIVED, SIGNOUT_USER_ERROR, USER_TOKEN } from '../constants/constants'
 import { api } from "./apiDetails"
 
 
@@ -27,6 +27,10 @@ export const signOut = async (dispatch, data) => {
             await dispatch({
                 type: SIGNOUT_USER_R_RECEIVED,
                 payload: jsonData
+            })
+            await dispatch({
+                type: USER_TOKEN,
+                payload: null,
             })
         }
     } catch (er) {

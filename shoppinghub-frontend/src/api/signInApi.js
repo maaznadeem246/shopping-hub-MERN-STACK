@@ -1,4 +1,4 @@
-import { SIGNIN_USER_R_RECEIVED, SIGNIN_USER_ERROR } from '../constants/constants'
+import { SIGNIN_USER_R_RECEIVED, SIGNIN_USER_ERROR, USER_TOKEN} from '../constants/constants'
 import { api } from "./apiDetails"
 
 
@@ -10,10 +10,10 @@ const headers = {
 export const signIn = async (dispatch, data) => {
     try {
         //console.log(JSON.stringify(data))
-        console.log(api)
+    
         const signInIt = await fetch(`${api}/signin`, { method: 'POST', headers, body: JSON.stringify(data) })
         const jsonData = await signInIt.json()
-        //await console.log(jsonData)
+        await console.log(jsonData)
         if (jsonData.error) {
             await dispatch({
                 type: SIGNIN_USER_ERROR,
@@ -23,6 +23,10 @@ export const signIn = async (dispatch, data) => {
             await dispatch({
                 type: SIGNIN_USER_R_RECEIVED,
                 payload: jsonData
+            })
+            await dispatch({
+                type: USER_TOKEN,
+                payload: jsonData.token
             })
         }
     } catch (er) {

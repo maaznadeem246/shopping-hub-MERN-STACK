@@ -1,7 +1,7 @@
 import { USER_TOKEN, USER_DETAILS_R_SENT, USER_DETAILS_R_RECIEVED, USER_DETAILS_ERROR } from "../constants/constants"
 
 const initialState = {
-    pending:false,
+    pending:true,
     userData: { },
     userToken:null,
     error : null,
