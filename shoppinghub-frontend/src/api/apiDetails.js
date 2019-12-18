@@ -6,9 +6,7 @@ var c =  window.mobilecheck = function () {
     return check;
 };
 
-if (false ){
-    api = "http://192.168.1.102:3001"
-}
+
 
 
 export {api}
