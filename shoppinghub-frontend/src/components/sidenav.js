@@ -109,7 +109,7 @@ const StyledNavItem = styled.div`
 
   a {
     display:inline-flex;
-
+ 
     padding-left:20px;
     font-size: 1.2em;
     

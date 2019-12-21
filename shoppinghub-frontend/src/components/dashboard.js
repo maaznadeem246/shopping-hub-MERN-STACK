@@ -1,5 +1,23 @@
 import React, {Component} from 'react';
 import SideNav from "./sidenav.js"
+import DashboardCom from "./DashboardCom"
+import { Container, Row, Col } from "react-bootstrap"
+import styled from "styled-components"
+
+
+const StyledDashboardCom = styled.div`
+
+
+  margin-left:${(props) => props.active ? "6%" : "20%"};
+  border:1px solid black;
+
+    @media (max-width: 768px){
+        margin-left:14%;
+    }
+
+
+`
+
 
 class Dashboard extends Component {
     constructor(props) {
@@ -28,7 +46,7 @@ class Dashboard extends Component {
             //console.log(props.signedOutUser)
             localStorage.removeItem('autt')   
             props.signedOut();
-            props.history.push('/')
+            props.history.push('/signin')
          }
         
         if (props.userstoken == null) {
@@ -63,8 +81,18 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
+                <div className="paddingCont" ></div>
                 <SideNav signOut={this.signOut} name={this.state.userD} cHam={this.state.cHam} changeHam={this.changeHam}/>
-                                    
+                <Container fluid>
+                    <Row>
+                        <Col>
+                            <StyledDashboardCom active={this.state.cHam} >
+                                <DashboardCom  />
+                            </StyledDashboardCom>    
+                        </Col>
+                    </Row>
+                </Container>
+                
             </div>
         )
     }

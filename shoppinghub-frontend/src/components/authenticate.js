@@ -19,7 +19,7 @@ class Authenticate extends Component {
 
 
     static getDerivedStateFromProps(props, state){
-        console.log(props)
+        //console.log(props)
         if (state.authproc){
                 
                  props.userDetails(props.token)
@@ -32,14 +32,14 @@ class Authenticate extends Component {
 
         if (props.token == null  ) {
           //  console.log(props.token)
-            props.history.push('/')
+            props.history.push('/signin')
             return null;
         }
-
-        if (props.error != null) {
+        //console.log(props)
+        if (props.error != null && props.signedout) {
             localStorage.removeItem('autt')
             props.signedOut();
-            props.history.push('/')
+            props.history.push('/signin')
             return null;
         }
         
@@ -69,11 +69,12 @@ class Authenticate extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
+    //console.log(state)
     return {
         token:state.user.userToken,
         pending:state.user.pending,
         error:state.user.error,
+        signedout:state.signOutUser.userData.signedOut
     };
 }
 

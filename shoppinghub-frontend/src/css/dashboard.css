@@ -55,11 +55,13 @@
 
 
 .hideSideNav{
-    width:5%;
+    width:6%;
     content: none;
-
 }
 
+.dashboardCom{
+ 
+}
 
 
 
@@ -291,6 +293,10 @@
   word-wrap:break-word;
 }
 
+.paddingCont{
+  padding-top:130px;
+}
+
 /* .profile-solids.icons {
   display: inline-block;
   color: whitesmoke;
@@ -351,6 +357,11 @@
 
 
 @media (max-width: 768px){
+
+  .paddingCont{
+  padding-top:60px;
+}
+
   .sideNav{
     width:100%;
     padding-top: 55px;
