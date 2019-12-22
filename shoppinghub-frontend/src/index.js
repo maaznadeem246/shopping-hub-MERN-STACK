@@ -46,15 +46,13 @@ ReactDOM.render(
                 <Header />
                     <Switch>
                         <Route exact={true}  path="/" component={HomeContainer}/>
-                    <Route exact={true} path="/signin" component={SigninContainer} />
-                    <Route exact={true} path="/signup" component={SignupContainer} />
-                <Route exact={true} path="/aboutus" component={AboutUs} />
-                <Route exact={true} path="/contactus" component={ContactUs} />
-                <Route exact={true} path="/returnpolicy" component={ReturnPolicy} />
+                        <Route exact={true} path="/signin" component={SigninContainer} />
+                        <Route exact={true} path="/signup" component={SignupContainer} />
+                        <Route exact={true} path="/aboutus" component={AboutUs} />
+                        <Route exact={true} path="/contactus" component={ContactUs} />
+                        <Route exact={true} path="/returnpolicy" component={ReturnPolicy} />
                         <Authenticate>
-                            <Route  path="/dashboard" component={dashboardContainer} />
-                                       
-    
+                            <Route  path="/dashboard" component={dashboardContainer} />    
                         </Authenticate>
                     </Switch>
                 </BrowserRouter>

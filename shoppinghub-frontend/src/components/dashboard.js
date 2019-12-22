@@ -26,10 +26,15 @@ class Dashboard extends Component {
             token:'',
             cHam:false,
             userD:null,
-            path:this
-        }
+            path:'',
 
+        }
+        this.getPathValueForDash = this.getPathValueForDash.bind(this)
     }
+
+    // this function will get the last value from
+    // the URL for the dashboard 
+    
 
     changeHam = () => {
         this.setState({
@@ -37,38 +42,44 @@ class Dashboard extends Component {
         })
     }
 
+
     static getDerivedStateFromProps(props, state){
-        //console.log(props)
-        props.userToken();
+        console.log(props)
+        // props.userToken();
 
 
-        if (props.signedOutUser.signedout) {
-            //console.log(props.signedOutUser)
-            localStorage.removeItem('autt')   
-            props.signedOut();
-            props.history.push('/signin')
-         }
+        // if (props.signedOutUser.signedout) {
+        //     //console.log(props.signedOutUser)
+        //     localStorage.removeItem('autt')   
+        //     props.signedOut();
+        //     props.history.push('/signin')
+        //  }
         
-        if (props.userstoken == null) {
-            props.history.push({ pathname: '/signin' })
-            // console.log('in')
-        }
+        // if (props.userstoken == null) {
+        //     props.history.push({ pathname: '/signin' })
+        //     // console.log('in')
+        // }
         
         
 
-        if(props.usersToken != state.token){
+        // if(props.usersToken != state.token){
 
-            return {
-                token: props.userstoken,
-                userD :props.userD.name       
-            };
-        }
+        //     return {
+        //         token: props.userstoken,
+        //         userD :props.userD.name       
+        //     };
+        // }
 
         return null;
     }
 
+    getPathValueForDash = () => {
+        console.log(this.props.match.params.dsb)
+        
+    }
+
     componentDidMount(){
-       //    this.props.userDetails(this.state.token)
+         this.getPathValueForDash();
     }
 
 
@@ -87,7 +98,7 @@ class Dashboard extends Component {
                     <Row>
                         <Col>
                             <StyledDashboardCom active={this.state.cHam} >
-                                <DashboardCom  />
+                                <DashboardCom   />
                             </StyledDashboardCom>    
                         </Col>
                     </Row>

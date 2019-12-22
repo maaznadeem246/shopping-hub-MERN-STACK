@@ -18,7 +18,7 @@ const auth = async (req, res, next) => {
         req.profile = profile
         next()
     } catch (e) {
-        res.status(401).send({ error: 'Please login first.' })
+        res.status(401).send({ error: 'Please login first.',authenticated:false })
     }
 }
 

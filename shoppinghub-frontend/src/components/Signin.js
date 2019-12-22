@@ -51,34 +51,34 @@ class Signin extends Component {
 
     UNSAFE_componentWillMount() {
         //console.log(this.props)
-        if (this.props.userstoken != null ) {
-            this.props.history.push({ pathname: '/' })
-            //console.log('in')
-        }else if (this.props.userData['token']) {
-            localStorage.setItem('autt', this.props.userData['token'])
-            this.props.history.push({ pathname: '/' })
-            //console.log('in')
-        }
-        this.props.userToken();
+        // if (this.props.userstoken != null ) {
+        //     this.props.history.push({ pathname: '/' })
+        //     //console.log('in')
+        // }else if (this.props.userData['token']) {
+        //     localStorage.setItem('autt', this.props.userData['token'])
+        //     this.props.history.push({ pathname: '/' })
+        //     //console.log('in')
+        // }
+        // this.props.userToken();
     }
 
 
     UNSAFE_componentWillReceiveProps(props) {
         //console.log(props)
-        const er = this.state.error
-        if (props.error) {
-            this.setState({
-                error: { ...er, ers: props.error }
-            })
-        }
-        if (props.userstoken != null ){
-            props.history.push({ pathname: '/' })
-        }
-        else if (props.userData['token']) {
-            localStorage.setItem('autt', props.userData['token'])
-            props.history.push({ pathname: '/' })
-        }
-        this.props.userToken();
+        // const er = this.state.error
+        // if (props.error) {
+        //     this.setState({
+        //         error: { ...er, ers: props.error }
+        //     })
+        // }
+        // if (props.userstoken != null ){
+        //     props.history.push({ pathname: '/' })
+        // }
+        // else if (props.userData['token']) {
+        //     localStorage.setItem('autt', props.userData['token'])
+        //     props.history.push({ pathname: '/' })
+        // }
+        // this.props.userToken();
     }
 
     validationOfForm = () => {

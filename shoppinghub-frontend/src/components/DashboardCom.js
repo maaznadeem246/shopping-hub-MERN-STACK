@@ -12,7 +12,7 @@ class DashboardCom extends Component{
     render(){
         return(
             <div >
-                asdadasdasds
+                
             </div>
         )
     }
