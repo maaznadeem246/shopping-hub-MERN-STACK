@@ -1,5 +1,5 @@
 import { AUTHENTICATION_R_SENT } from '../constants/constants'
-
+import authenticateApi from "../api/authenticateApi"
 
 export const authenticateUser = (data) => {
     return dispatch => {
@@ -7,5 +7,7 @@ export const authenticateUser = (data) => {
             type: AUTHENTICATION_R_SENT,
         })
         
+        authenticateApi(dispatch,data)
+
     }
 }   

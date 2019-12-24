@@ -13,7 +13,7 @@ routes.get('/authentication', auth, async (req, res) => {
     
         res.send({ authenticated: true })
     } catch (e) {
-        res.status(400).send()
+        res.status(401).send()
     }
 })
 

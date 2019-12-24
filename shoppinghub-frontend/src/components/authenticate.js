@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // with withRouter You can get access to the history object’s properties
-import { withRouter } from 'react-router-dom';
-import {userDetails} from '../actions/userActions'
+import { withRouter, Redirect ,Route } from 'react-router-dom';
+import {authenticateUser} from '../actions/authenticationActions'
 import Loading from "./Loading"
-import {  signedOut } from "../actions/signOutActions"
+
 
 class Authenticate extends Component {
 
@@ -21,7 +21,26 @@ class Authenticate extends Component {
 
     static getDerivedStateFromProps(props, state){
 
+        const token = localStorage.getItem('autt')
+
+        console.log(token)
+
+        if (props.error['statusCode'] == 401) {
+            localStorage.removeItem('autt')
+            
+        }
         
+        if (token == null) {
+            
+            return {
+                pending: false,
+                authenticated: false
+            };
+        }else if(!state.authenticated){
+            console.log("in")
+            props.authenticateUser(token)
+            
+        }
 
 
         // //console.log(props)
@@ -54,14 +73,17 @@ class Authenticate extends Component {
         //     error:props.error
         // };
 
-        return null;
+        return {
+            pending:props.pending,
+            authenticated:props.auth
+        };
     }
 
 
     render() {
 
-        const { children, token } = this.props;
-        const {pending, error} = this.state
+        const { children, ...rest } = this.props;
+        const {pending, error, authenticated} = this.state
           //console.log(this.props)
         // if (pending){
         //     return <div style={{ marginTop: "200px" }}> <Loading /></div>
@@ -70,20 +92,42 @@ class Authenticate extends Component {
         // } else if (!pending && error != null){
         //     return <div style={{ marginTop: "200px" }}>{error}</div>
         // }
-        return <div>{children}</div>
+        if (pending  ){
+                return <div style={{ marginTop: "200px" }}> <Loading /></div>
+            }else{
+            return (
+                <Route
+                    exact={true}
+                    {...rest}
+                    render={({ location }) =>
+                        authenticated ? (
+                            children
+                        ) : (
+                                <Redirect
+                                    to={{
+                                        pathname: "/signin",
+                                        state: { from: location }
+                                    }}
+                                />
+                            )
+                    }
+                />
+            )
+
+        }
+
        // return (!pending) ? <div>{children}</div> : <div style={{marginTop:"200px"}}>Loading</div>;
 
     }
 }
 
 function mapStateToProps(state) {
-    //console.log(state)
+    console.log(state)
     return {
-        token:state.user.userToken,
-        pending:state.user.pending,
-        error:state.user.error,
-        signedout:state.signOutUser.userData.signedOut
+        auth:state.authentication.auth,
+        pending:state.authentication.pending,
+        error:state.authentication.error,
     };
 }
 
-export default withRouter(connect(mapStateToProps, {userDetails, signedOut})(Authenticate));
+export default withRouter(connect(mapStateToProps, {authenticateUser})(Authenticate));

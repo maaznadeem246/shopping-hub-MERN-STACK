@@ -3,7 +3,7 @@ import SideNav from "./sidenav.js"
 import DashboardCom from "./DashboardCom"
 import { Container, Row, Col } from "react-bootstrap"
 import styled from "styled-components"
-
+import { withRouter} from 'react-router-dom';
 
 const StyledDashboardCom = styled.div`
 
@@ -45,15 +45,15 @@ class Dashboard extends Component {
 
     static getDerivedStateFromProps(props, state){
         console.log(props)
-        // props.userToken();
+       // props.userToken();
 
 
-        // if (props.signedOutUser.signedout) {
-        //     //console.log(props.signedOutUser)
-        //     localStorage.removeItem('autt')   
-        //     props.signedOut();
-        //     props.history.push('/signin')
-        //  }
+        if (props.signedOutUser.signedout) {
+            //console.log(props.signedOutUser)
+            localStorage.removeItem('autt')   
+            props.signedOut();
+            props.history.push({ pathname: '/signin' })
+         }
         
         // if (props.userstoken == null) {
         //     props.history.push({ pathname: '/signin' })
@@ -79,13 +79,14 @@ class Dashboard extends Component {
     }
 
     componentDidMount(){
-         this.getPathValueForDash();
+  //       this.getPathValueForDash();
     }
 
 
     signOut = () => {
         //console.log(this.state.token)
-        this.props.signOutUser(this.state.token)
+        const token = localStorage.getItem('autt')
+        this.props.signOutUser(token)
     }
 
 
@@ -109,4 +110,4 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);

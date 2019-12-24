@@ -19,7 +19,7 @@ import Header from "./components/header"
 import dashboard from "./containers/dashboardContainer"
 import Authenticate from "./components/authenticate"
 import * as serviceWorker from './serviceWorker';
-import dashboardContainer from './containers/dashboardContainer';
+import DashboardContainer from './containers/dashboardContainer';
 
 
 
@@ -51,9 +51,10 @@ ReactDOM.render(
                         <Route exact={true} path="/aboutus" component={AboutUs} />
                         <Route exact={true} path="/contactus" component={ContactUs} />
                         <Route exact={true} path="/returnpolicy" component={ReturnPolicy} />
-                        <Authenticate>
-                            <Route  path="/dashboard" component={dashboardContainer} />    
+                        <Authenticate path="/dashboard">
+                                <DashboardContainer/> 
                         </Authenticate>
+                        <Route path="*" component={()=>(<div>no match</div>)} />
                     </Switch>
                 </BrowserRouter>
             </Provider>

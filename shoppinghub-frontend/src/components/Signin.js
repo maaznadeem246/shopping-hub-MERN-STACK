@@ -48,6 +48,33 @@ class Signin extends Component {
     }
 
 
+    static getDerivedStateFromProps(props, state) {
+        console.log(props)
+        const token = localStorage.getItem('autt')
+
+        const er = state.error
+        if (props.error) {
+            return {
+                error: { ...er, ers: props.error }
+            }
+        }
+
+        console.log(props.userData.token)
+        if (props.userData.token != undefined){
+            localStorage.setItem('autt', props.userData['token'])
+            props.history.push({ pathname: '/' })
+            return null;
+        }
+        
+       
+        if (token && !props.pending) {
+            props.history.replace({ pathname: '/'})
+            return null;
+        }
+
+    }
+
+
 
     UNSAFE_componentWillMount() {
         //console.log(this.props)
