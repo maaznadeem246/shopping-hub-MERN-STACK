@@ -162,40 +162,10 @@ class SideNav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activePath: props.location.pathname,
+            activePath: this.props.location.pathname,
             cHam:true,
 
-            items: [
-                // {
-                //     path: '/dashboard/profile', /* path is used as id to check which NavItem is active basically */
-                //     name: 'Profile',
-                //     css: '',
-                //     proiconcss: "profile-solid icon",
-                //     key: 1 /* Key is required, else console throws error. Does this please you Mr. Browser?! */
-                // },
-                 {
-                    path: '/dashboard/product',
-                    name: 'Products',
-                    css: '',
-                    proiconcss: "product icon",
-                    key: 1
-                },
-                , {
-                    path: '/dashboard/orders',
-                    name: 'Orders',
-                    css: '',
-                    proiconcss: "order icon",
-                    key: 2
-                }
-                , {
-                    path: '/dashboard/sales-report',
-                    name: 'Sales Report',
-                    css: '',
-                    proiconcss: "salesReporting icon",
-                    key: 3
-                },
-                
-            ]
+            items: this.props.items
         }
     }
     onItemClick = (path) => {
@@ -222,7 +192,7 @@ class SideNav extends Component {
                                 <div className="bar3"></div>
                             </div>       
                         </div>
-                            <Link to='/dashboard/profile'  style={this.props.cHam ? { height: "70px" } : { height: "200px"}} className="profileImagediv " >
+                            <Link to='/dashboard/profile' onClick={()=>{this.onItemClick("/dashboard/profile")}} style={this.props.cHam ? { height: "70px" } : { height: "200px"}} className="profileImagediv " >
                                 <ProfileI active={this.props.cHam} />
                                 {!this.props.cHam && <div className='profilelinkname' > {this.props.name && this.props.name} </div>} 
                                 {/* <Image className="profileImage " src={require("../img/test.png")} roundedCircle /> */}

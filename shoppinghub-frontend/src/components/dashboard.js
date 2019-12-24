@@ -27,6 +27,37 @@ class Dashboard extends Component {
             cHam:false,
             userD:null,
             path:'',
+            items: [
+                // {
+                //     path: '/dashboard/profile', /* path is used as id to check which NavItem is active basically */
+                //     name: 'Profile',
+                //     css: '',
+                //     proiconcss: "profile-solid icon",
+                //     key: 1 /* Key is required, else console throws error. Does this please you Mr. Browser?! */
+                // },
+                {
+                    path: '/dashboard/product',
+                    name: 'Products',
+                    css: '',
+                    proiconcss: "product icon",
+                    key: 2
+                },
+                , {
+                    path: '/dashboard/orders',
+                    name: 'Orders',
+                    css: '',
+                    proiconcss: "order icon",
+                    key: 3
+                }
+                , {
+                    path: '/dashboard/sales-report',
+                    name: 'Sales Report',
+                    css: '',
+                    proiconcss: "salesReporting icon",
+                    key: 4
+                },
+
+            ]
 
         }
         this.getPathValueForDash = this.getPathValueForDash.bind(this)
@@ -45,14 +76,17 @@ class Dashboard extends Component {
 
     static getDerivedStateFromProps(props, state){
         console.log(props)
-       // props.userToken();
-
+        const token = localStorage.getItem('autt')
+        
+        if(props.userD.name == undefined && state.userD == null){
+            props.userDetails(token)
+        }
 
         if (props.signedOutUser.signedout) {
             //console.log(props.signedOutUser)
             localStorage.removeItem('autt')   
             props.signedOut();
-            props.history.push({ pathname: '/signin' })
+            props.history.push({ pathname: '/signin' ,state:props.location.pathname})
          }
         
         // if (props.userstoken == null) {
@@ -70,7 +104,9 @@ class Dashboard extends Component {
         //     };
         // }
 
-        return null;
+        return {
+            userD:props.userD
+        };
     }
 
     getPathValueForDash = () => {
@@ -94,7 +130,7 @@ class Dashboard extends Component {
         return (
             <div>
                 <div className="paddingCont" ></div>
-                <SideNav signOut={this.signOut} name={this.state.userD} cHam={this.state.cHam} changeHam={this.changeHam}/>
+                <SideNav signOut={this.signOut} name={this.state.userD.name} items={this.state.items} cHam={this.state.cHam} changeHam={this.changeHam}/>
                 <Container fluid>
                     <Row>
                         <Col>
