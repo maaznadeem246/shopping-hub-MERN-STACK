@@ -36,7 +36,12 @@ const profileSchema = mongoose.Schema({
     },
     account:{
         type: String,
-        required:true
+        required:true,
+        validate(value){
+            if (value != "seller" && value != "customer"){
+                throw new Error("Account invalid")
+            }
+        }
     }
 })
 

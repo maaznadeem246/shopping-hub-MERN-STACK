@@ -4,14 +4,13 @@ import { api } from "./apiDetails"
 
 const authenticateUser = async (dispatch, token) => {
     try {
-        
         const getAuthentication= await fetch(`${api}/authentication`, {
             method: 'GET', headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`
             }
         })
-        console.log(getAuthentication)
+        //console.log(getAuthentication)
         const jsonData = await getAuthentication.json()
         
         if(jsonData.error){

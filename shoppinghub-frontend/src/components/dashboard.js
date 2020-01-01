@@ -3,7 +3,7 @@ import SideNav from "./sidenav.js"
 import DashboardCom from "./DashboardCom"
 import { Container, Row, Col } from "react-bootstrap"
 import styled from "styled-components"
-import { withRouter} from 'react-router-dom';
+import { withRouter ,Route} from 'react-router-dom';
 
 const StyledDashboardCom = styled.div`
 
@@ -27,16 +27,9 @@ class Dashboard extends Component {
             cHam:false,
             userD:null,
             path:'',
-            items: [
-                // {
-                //     path: '/dashboard/profile', /* path is used as id to check which NavItem is active basically */
-                //     name: 'Profile',
-                //     css: '',
-                //     proiconcss: "profile-solid icon",
-                //     key: 1 /* Key is required, else console throws error. Does this please you Mr. Browser?! */
-                // },
+            routesDetails: [
                 {
-                    path: '/dashboard/product',
+                    path: '/dashboard/products',
                     name: 'Products',
                     css: '',
                     proiconcss: "product icon",
@@ -130,7 +123,7 @@ class Dashboard extends Component {
         return (
             <div>
                 <div className="paddingCont" ></div>
-                <SideNav signOut={this.signOut} name={this.state.userD.name} items={this.state.items} cHam={this.state.cHam} changeHam={this.changeHam}/>
+                <SideNav signOut={this.signOut} name={this.state.userD.name} items={this.state.routesDetails} cHam={this.state.cHam} changeHam={this.changeHam}/>
                 <Container fluid>
                     <Row>
                         <Col>
@@ -140,7 +133,7 @@ class Dashboard extends Component {
                         </Col>
                     </Row>
                 </Container>
-                
+
             </div>
         )
     }
