@@ -23,7 +23,7 @@ class Authenticate extends Component {
 
         const token = localStorage.getItem('autt')
 
-        console.log(token)
+       // console.log(token)
 
         if (props.error['statusCode'] == 401) {
             localStorage.removeItem('autt')
@@ -37,7 +37,7 @@ class Authenticate extends Component {
                 authenticated: false
             };
         }else if(!state.authenticated){
-            console.log("in")
+            //console.log("in")
             props.authenticateUser(token)
             
         }
@@ -78,6 +78,7 @@ class Authenticate extends Component {
             authenticated:props.auth
         };
     }
+
 
 
     render() {
@@ -122,7 +123,7 @@ class Authenticate extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
+   // console.log(state)
     return {
         auth:state.authentication.auth,
         pending:state.authentication.pending,

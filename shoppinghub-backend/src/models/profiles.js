@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const jwt = require('jsonwebtoken')
 const bcryptjs = require('bcryptjs')
+const { getNames } = require('country-list')
 
 const profileSchema = mongoose.Schema({
     name:{
@@ -31,17 +32,38 @@ const profileSchema = mongoose.Schema({
         }
     }],
     avatar: {
-        type: Buffer,        
-        required:false
+        type: Buffer, 
+        default:null,       
+        required:false,
+
     },
     account:{
         type: String,
-        required:true,
+
         validate(value){
-            if (value != "seller" && value != "customer"){
-                throw new Error("Account invalid")
+            if (value.toLowerCase() != "seller" && value.toLowerCase() != "customer"){
+                throw new Error("Account option invalid")
             }
-        }
+        },
+        //required: true,
+    },
+    country:{
+        type:String,
+        default:null,
+        lowercase: true,
+        // validate(value){
+        //   getNames().map(m => {
+        //       if(m != value){
+
+        //       }
+        //   })  
+        //}
+    },
+    address:{
+        type:String,
+        lowercase:true,
+        default:null,
+        maxlength:60
     }
 })
 
@@ -101,7 +123,6 @@ profileSchema.methods.toJSON = function(){
     
     delete publicProfileData.password
     delete publicProfileData.tokens
-    delete publicProfileData.avatar
     
     return publicProfileData 
 }

@@ -6,7 +6,7 @@ import { api } from "./apiDetails"
 const userTDeails = async (dispatch, token) => {
     
     try{
-        const getTheUserData = await fetch(`${api}/profiles/myprofile`, { method: 'GET',headers:{
+        const getTheUserData = await fetch(`${api}/profile`, { method: 'GET',headers:{
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         }})

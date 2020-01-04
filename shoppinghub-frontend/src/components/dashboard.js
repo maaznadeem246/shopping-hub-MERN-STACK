@@ -68,7 +68,7 @@ class Dashboard extends Component {
 
 
     static getDerivedStateFromProps(props, state){
-        console.log(props)
+       // console.log(props)
         const token = localStorage.getItem('autt')
         
         if(props.userD.name == undefined && state.userD == null){
@@ -107,9 +107,8 @@ class Dashboard extends Component {
         
     }
 
-    componentDidMount(){
-  //       this.getPathValueForDash();
-    }
+
+
 
 
     signOut = () => {
@@ -128,7 +127,7 @@ class Dashboard extends Component {
                     <Row>
                         <Col>
                             <StyledDashboardCom active={this.state.cHam} >
-                                <DashboardCom   />
+                                <DashboardCom forupdate={true}   />
                             </StyledDashboardCom>    
                         </Col>
                     </Row>
