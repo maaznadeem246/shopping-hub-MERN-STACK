@@ -8,7 +8,7 @@ const sellerProfileApi = async (dispatch, token) => {
             Authorization: `Bearer ${token}`
         }})
         const jsonData = await getSellerProfile.json()
-        await console.log(jsonData)
+        //await console.log(jsonData)
     
         if (jsonData.error) {
             console.log(jsonData)
