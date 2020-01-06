@@ -59,7 +59,8 @@ class Signin extends Component {
             }
         }
 
-        console.log(props.userData.token)
+        console.log(props.location.state)
+
         if (props.userData.token != undefined){
             localStorage.setItem('autt', props.userData['token'])
             props.history.push({ pathname: props.location.state|| '/'})

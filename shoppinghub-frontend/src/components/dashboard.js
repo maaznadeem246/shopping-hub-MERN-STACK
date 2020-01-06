@@ -24,7 +24,7 @@ class Dashboard extends Component {
         super(props);
         this.state={
             token:'',
-            cHam:false,
+            cHam:true,
             userD:null,
             path:'',
             routesDetails: [
@@ -66,9 +66,10 @@ class Dashboard extends Component {
         })
     }
 
+    
 
     static getDerivedStateFromProps(props, state){
-        console.log(props)
+       // console.log(props)
         const token = localStorage.getItem('autt')
         
         //        if(props.userD.name == undefined && state.userD == null){

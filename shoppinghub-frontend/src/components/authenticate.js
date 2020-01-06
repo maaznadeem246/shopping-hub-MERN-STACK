@@ -85,7 +85,7 @@ class Authenticate extends Component {
 
         const { children, ...rest } = this.props;
         const {pending, error, authenticated} = this.state
-          //console.log(this.props)
+          console.log(this.state)
         // if (pending){
         //     return <div style={{ marginTop: "200px" }}> <Loading /></div>
         // }else if(!pending && error == null ){
@@ -107,7 +107,7 @@ class Authenticate extends Component {
                                 <Redirect
                                     to={{
                                         pathname: "/signin",
-                                        state: { from: location }
+                                        state: { from: location, authenticated }
                                     }}
                                 />
                             )

@@ -17,7 +17,7 @@ const StyledFlexContainer = styled.div`
 `
 
 const StyledFlexItem = styled.div`
-
+       
     padding:10px 10px 10px 50px;
 
     @media all and (max-width: 800px) {
@@ -25,19 +25,36 @@ const StyledFlexItem = styled.div`
     }
     
     @media all and (max-width: 500px){
-        padding:0px 0px 0px 0px
+        padding:8px 0px 8px 0px;
+        width:100%;
     }
 
 
 `
 
 const StyledLabel = styled.div`
-    color:red;
+    font-size:1.3rem;
+    padding:10px 0px 10px 0px;
+    
+    @media all and (max-width: 500px){
+        padding:7px 0px 7px 0px;
+        font-size:1rem
+        width:100%;
+    }
 `
 
 const StyledInput  = styled.input`
 
-    width:300px;
+    width:350px;
+    border:1.5px solid #646464;
+    border-radius: 5px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-right:10px;
+    padding-left:10px;
+
+
+
 
     @media all and (max-width: 800px) {
 
@@ -45,7 +62,40 @@ const StyledInput  = styled.input`
     
     @media all and (max-width: 500px){
         width:100%;
+        font-size:1rem;
     }
+
+`
+
+const StyledSelect = styled.select`
+    width:75%;
+    border:1.5px solid #646464;
+    border-radius:3px;
+    padding:10px 2px 10px 2px;
+    background-color:white;
+     @media all and (max-width: 500px){
+       padding:7px 2px 7px 2px;
+        width:100%;
+        font-size:1rem;
+    }
+`
+
+const StyledTextArea = styled.textarea`
+    width:400px;
+    border:1.5px solid #646464;
+    border-radius:3px;
+    padding:10px 2px 10px 2px;
+    background-color:white;
+    height:100px;
+     @media all and (max-width: 500px){
+       padding:7px 2px 7px 2px;
+        width:100%;
+        font-size:1rem;
+    }
+
+`
+
+const StyledError = styled.div`
 
 `
 
@@ -89,18 +139,21 @@ class ProfileComponent extends Component{
 
     profileSave(event){
         event.preventDefault();
+        console.log(this.state)
     }
 
 
 
     render(){
-        console.log(this.state)
+    // console.log(this.state)
         return(
             <Container as="form" onSubmit={this.profileSave}   > 
                 <Row>
                     <Col>
                         <StyledFlexContainer>
+                            <StyledFlexItem>
                                 Avatar
+                            </StyledFlexItem>
                         </StyledFlexContainer>
                     </Col>
                 </Row>
@@ -115,10 +168,11 @@ class ProfileComponent extends Component{
                                 onChange={this.handleChange}
                                 value={this.state.name}
                                 name="name"
-                            />
+                                />
+                                <StyledError></StyledError>
                             </StyledFlexItem>
                             <StyledFlexItem>
-                                <StyledLabel>email</StyledLabel>
+                                <StyledLabel>Email</StyledLabel>
                                 <StyledInput    
 
                                     type="text"
@@ -126,6 +180,7 @@ class ProfileComponent extends Component{
                                     value={this.state.email}
                                     name="email"
                                 />
+                                <StyledError></StyledError>
                             </StyledFlexItem>
                         </StyledFlexContainer>
                     </Col>
@@ -135,15 +190,16 @@ class ProfileComponent extends Component{
                         <StyledFlexContainer>
                             <StyledFlexItem>
                                 <StyledLabel>Country</StyledLabel>
-                            <select
-                                style={{width:"100%"}}
+                            <StyledSelect
+                               
                                 onChange={this.handleChange}
                                 value={this.state.country}
                                 name="country"
                             >
                             <option value="null">Select Your Country</option>
-                                <CountriesOptions />
-                            </select>
+                            <CountriesOptions />
+                            </StyledSelect>
+                                <StyledError></StyledError>
                             </StyledFlexItem>
                         </StyledFlexContainer>
                     </Col>
@@ -153,7 +209,7 @@ class ProfileComponent extends Component{
                         <StyledFlexContainer>
                             <StyledFlexItem>
                                 <StyledLabel>Address</StyledLabel>
-                                <textarea value={this.state.address} name="address" onChange={this.handleChange} />
+                                <StyledTextArea value={this.state.address} name="address" onChange={this.handleChange} />
                             </StyledFlexItem>
                         </StyledFlexContainer>
                     </Col>
