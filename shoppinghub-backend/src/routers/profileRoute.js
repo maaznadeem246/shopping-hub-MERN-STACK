@@ -14,4 +14,21 @@ routes.get('/profile', auth, async (req, res) => {
     } 
 })
 
+routes.put('/profile/saveprofile', auth, async (req, res) => {
+    try {
+
+        const { profile, token, body } = req
+
+
+        Object.assign(profile,body)
+        // await console.log(body)
+        // await console.log(profile)
+        await profile.save()
+        res.send({profile,saved:true})
+    } catch (e) {
+        res.status(400).send({ saved: false , error: true, e: e.message })
+    }
+})
+
+
 module.exports = routes

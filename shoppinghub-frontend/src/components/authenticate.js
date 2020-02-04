@@ -14,6 +14,7 @@ class Authenticate extends Component {
             //token:this.props.token,
             authenticated:false,
             pending:true,
+            error: {statusCode: null},
           //  authproc:true,
         }
     }
@@ -75,7 +76,8 @@ class Authenticate extends Component {
 
         return {
             pending:props.pending,
-            authenticated:props.auth
+            authenticated:props.auth,
+            error:props.error
         };
     }
 
@@ -85,7 +87,7 @@ class Authenticate extends Component {
 
         const { children, ...rest } = this.props;
         const {pending, error, authenticated} = this.state
-          console.log(this.state)
+        //  console.log(this.state)
         // if (pending){
         //     return <div style={{ marginTop: "200px" }}> <Loading /></div>
         // }else if(!pending && error == null ){
@@ -101,7 +103,7 @@ class Authenticate extends Component {
                     exact={true}
                     {...rest}
                     render={({ location }) =>
-                        authenticated ? (
+                        authenticated  ? (
                             children
                         ) : (
                                 <Redirect

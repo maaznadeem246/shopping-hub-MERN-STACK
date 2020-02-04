@@ -21,7 +21,7 @@ const StyledFlexItem = styled.div`
     padding:10px 10px 10px 50px;
 
     @media all and (max-width: 800px) {
-
+        width:100%;
     }
     
     @media all and (max-width: 500px){
@@ -83,13 +83,14 @@ const StyledSelect = styled.select`
 const StyledTextArea = styled.textarea`
     width:400px;
     border:1.5px solid #646464;
-    border-radius:3px;
-    padding:10px 2px 10px 2px;
+    border-radius:2.5px;
+    padding:10px 10px 10px 10px;
     background-color:white;
-    height:100px;
-     @media all and (max-width: 500px){
+    height:85px;
+     @media all and (max-width: 800px){
        padding:7px 2px 7px 2px;
         width:100%;
+        height:110px;
         font-size:1rem;
     }
 
@@ -124,6 +125,7 @@ class ProfileComponent extends Component{
             name,
             email,
             account,
+            saveButton:false,
         }
         this.handleChange = this.handleChange.bind(this)
         this.profileSave = this.profileSave.bind(this)
@@ -218,7 +220,7 @@ class ProfileComponent extends Component{
                     <Col>
                         <StyledFlexContainer>
                             <StyledFlexItem>
-                                <Button type="submit">
+                                <Button type="submit" disabled={!this.state.saveButton}>
                                     Save
                                 </Button>
                             </StyledFlexItem>
@@ -263,7 +265,7 @@ class ProfileDashboard extends Component{
 
     render(){
         const {pending} = this.state;
-        
+        console.log(this.state)
         if(pending){
             return (
                 <div><Loading/></div>

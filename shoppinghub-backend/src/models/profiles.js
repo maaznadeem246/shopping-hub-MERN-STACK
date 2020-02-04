@@ -61,9 +61,8 @@ const profileSchema = mongoose.Schema({
     },
     address:{
         type:String,
-        lowercase:true,
         default:null,
-        maxlength:60
+        maxlength:160
     }
 })
 

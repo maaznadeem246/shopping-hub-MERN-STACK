@@ -69,7 +69,8 @@ class Dashboard extends Component {
     
 
     static getDerivedStateFromProps(props, state){
-       // console.log(props)
+        //console.log(props)
+        //console.log(state)
         const token = localStorage.getItem('autt')
         
         //        if(props.userD.name == undefined && state.userD == null){

@@ -32,7 +32,7 @@ const authenticateUser = async (dispatch, token) => {
         //check later for this dispatch
         await dispatch({
             type: AUTHENTICATION_ERROR,
-            payload: `${er}`
+            payload: {error:`${er}`,statusCode:500}
         })
     }
 }
