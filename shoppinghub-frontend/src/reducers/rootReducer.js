@@ -4,7 +4,7 @@ import signInReducer from "./signInReducer"
 import signOutReducer from "./signOutReducer"
 import userReducer from "./userReducer"
 import authenticationReducer from "./authenticationReducesr"
-import sellerProfileReducer from "./sellerProfileReducer"
+import { sellerProfileReducer, updateSellerProfileReducer} from "./sellerProfileReducer"
 
 const rootReducer = combineReducers({
     signUpUser:signUpReducer,
@@ -12,7 +12,8 @@ const rootReducer = combineReducers({
     signOutUser:signOutReducer,
     user: userReducer,
     authentication:authenticationReducer,
-    sellerProfile:sellerProfileReducer
+    sellerProfile:sellerProfileReducer,
+    updateSellerProfile: updateSellerProfileReducer
 })
 
 export default rootReducer;

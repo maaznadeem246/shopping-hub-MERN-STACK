@@ -7,7 +7,7 @@ const { getNames } = require('country-list')
 const profileSchema = mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:true,
     },
     email:{
         type: String,
@@ -51,13 +51,14 @@ const profileSchema = mongoose.Schema({
         type:String,
         default:null,
         lowercase: true,
-        // validate(value){
-        //   getNames().map(m => {
-        //       if(m != value){
-
-        //       }
-        //   })  
-        //}
+        validate(value){
+        const val = getNames().every(m => {
+            return m.toLowerCase() != value.toLowerCase()
+          })
+            if (val) {
+                throw new Error("Country name is Invalid")
+            }  
+        }
     },
     address:{
         type:String,

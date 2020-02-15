@@ -1,5 +1,5 @@
-import {SELLERPROFILE_R_SENT,SELLERPROFILE_R_RECIVED,SELLERPROFILE_ERROR} from "../constants/constants"
-import sellerProfileApi from "../api/sellerProfileApi"
+import { SELLERPROFILE_R_SENT, UPDATESELLERPROFILE_R_SENT} from "../constants/constants"
+import {sellerProfileApi, updateSellerProfileApi} from "../api/sellerProfileApi"
 
 export const sellerProfileDetails = (token) => {
     return dispatch => {
@@ -8,6 +8,17 @@ export const sellerProfileDetails = (token) => {
         })
         sellerProfileApi(dispatch,token);
         
+    }
+}
+
+// this action is dispatched when we will update the profile
+export const udateSellerProfileDetails = (token,data) =>{
+    return dispatch => {
+        dispatch({
+            type:UPDATESELLERPROFILE_R_SENT
+        })
+        console.log("working")
+       updateSellerProfileApi(dispatch,token,data);
     }
 }
 

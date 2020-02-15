@@ -118,6 +118,8 @@ class ProfileComponent extends Component{
     constructor(props){
         super(props)
         const {avater, country, address, name, email, account} = this.props.profileDetails
+      
+
         this.state = {
             avater,
             country,
@@ -126,30 +128,49 @@ class ProfileComponent extends Component{
             email,
             account,
             saveButton:false,
+            error: this.props.error,
+
         }
         this.handleChange = this.handleChange.bind(this)
         this.profileSave = this.profileSave.bind(this)
     }
 
+
     handleChange(event){
         event.preventDefault();
         const { name, value } = event.target
         this.setState({
-            [name]:value
+            [name]:value,
+            saveButton:true
         })
     }
 
     profileSave(event){
         event.preventDefault();
-        console.log(this.state)
+        const { avater, country, address, name, email, account } = this.state
+        const profileDetails = { avater, country, address, name}
+       
+        //console.log(this.state)
+        //console.log(this.props)
+        this.props.updateProfileFunction(profileDetails)
     }
 
 
 
+
     render(){
-    // console.log(this.state)
+     //console.log(this.state)
         return(
             <Container as="form" onSubmit={this.profileSave}   > 
+                <Row>
+                    <Col>
+                        <StyledFlexContainer>
+                            <StyledFlexItem>
+                                {this.state.error.error && <div>{this.state.error.e} </div>}
+                            </StyledFlexItem>
+                        </StyledFlexContainer>
+                    </Col>
+                </Row>
                 <Row>
                     <Col>
                         <StyledFlexContainer>
@@ -220,8 +241,9 @@ class ProfileComponent extends Component{
                     <Col>
                         <StyledFlexContainer>
                             <StyledFlexItem>
-                                <Button type="submit" disabled={!this.state.saveButton}>
-                                    Save
+                            {console.log(" in profile")}
+                                <Button type="submit" disabled={!this.state.saveButton} >
+                                    Save 
                                 </Button>
                             </StyledFlexItem>
                         </StyledFlexContainer>
@@ -235,14 +257,17 @@ class ProfileComponent extends Component{
 
 
 // this is the dashboard  profile component 
-class ProfileDashboard extends Component{
+class SellerProfileDashboard extends Component{
     constructor(props){
         super(props)
         this.state={
-            pending:true,
+            pending: this.props.sellerProfile.pending ,
             profileDetails: this.props.sellerProfile.profileDetails,
-            error: this.props.sellerProfile.error
+            error: this.props.sellerProfile.error,
+            
         }
+
+        this.updateProfile = this.updateProfile.bind(this)
     }
 
 
@@ -255,28 +280,54 @@ class ProfileDashboard extends Component{
     componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
         if (this.props.sellerProfile.pending !== prevProps.sellerProfile.pending) {
+            console.log("IN")
             this.setState({
                 ...this.props.sellerProfile
             })
         }
+
+        if (this.props.updateSellerProfile.pending !== prevProps.updateSellerProfile.pending) {
+            console.log(this.props.updateSellerProfile)
+                 this.setState({
+                     profileDetails: !this.props.updateSellerProfile.updateProfileDetails
+                                     ? this.state.profileDetails 
+                                     : this.props.updateSellerProfile.updateProfileDetails.profile,
+                     pending: this.props.updateSellerProfile.pending
+                })
+
+
+            
+        }
     }
 
+    updateProfile(profileDetails){
+        const token = localStorage.getItem("autt") 
+      // console.log("s")
+      
+        this.props.udateSellerProfileDetails(token,profileDetails)
+    }
 
 
     render(){
         const {pending} = this.state;
-        console.log(this.state)
+
         if(pending){
             return (
                 <div><Loading/></div>
             )    
         }else{
             return (
-                <ProfileComponent profileDetails={this.state.profileDetails}/>
+                <ProfileComponent 
+                    updatedSellerDetails={this.props.updateSellerProfile}
+                    error={this.state.error}  
+                    profileDetails={this.state.profileDetails} 
+                    updateProfileFunction={this.updateProfile}
+
+                />
             )
         }
         
     }
 }
 
-export default ProfileDashboard;
+export default SellerProfileDashboard;

@@ -1,12 +1,19 @@
-import { SELLERPROFILE_R_RECIVED,SELLERPROFILE_R_SENT,SELLERPROFILE_ERROR } from "../constants/constants"
+import { SELLERPROFILE_R_RECIVED,SELLERPROFILE_R_SENT,SELLERPROFILE_ERROR,UPDATESELLERPROFILE_R_SENT,UPDATESELLERPROFILE_R_RECIVED,UPDATESELLERPROFILE_ERROR } from "../constants/constants"
 
-const initialState = {
-    pending: false,
+const initialStateGetProfile = {
+    pending: true,
     profileDetails: null,
     error: { statusCode: null },
 }
 
-export default function (state = initialState, action) {
+const initialStateUpdateProfile = {
+    pending: false,
+    updateProfileDetails: null,
+    error: { statusCode: null },
+}
+
+// this reducer for get the the profile details
+export const sellerProfileReducer = function (state = initialStateGetProfile, action) {
     switch (action.type) {
         case SELLERPROFILE_R_SENT:
             return { ...state,pending:true }
@@ -18,3 +25,22 @@ export default function (state = initialState, action) {
             return state
     }
 }
+
+// this reducer is for update seller profile
+
+export const updateSellerProfileReducer = function (state = initialStateUpdateProfile, action) {
+    switch (action.type) {
+        case UPDATESELLERPROFILE_R_SENT:
+            console.log("in reducer")
+            return { ...state, pending: true }
+        case UPDATESELLERPROFILE_R_RECIVED:
+            return { ...state, updateProfileDetails: action.payload, pending: false }
+        case UPDATESELLERPROFILE_ERROR:
+            return { ...state, error: action.payload, pending: false }
+        default:
+            return state
+    }
+}
+
+
+
