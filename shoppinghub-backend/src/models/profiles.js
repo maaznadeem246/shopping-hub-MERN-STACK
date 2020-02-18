@@ -51,14 +51,20 @@ const profileSchema = mongoose.Schema({
         type:String,
         default:null,
         lowercase: true,
-        validate(value){
-        const val = getNames().every(m => {
-            return m.toLowerCase() != value.toLowerCase()
-          })
-            if (val) {
-                throw new Error("Country name is Invalid")
-            }  
-        }
+        // validate(value){
+        // const val = getNames().every(m => {
+        //     console.log(value+ " inside")
+        //     if(value != null){
+        //         return m.toLowerCase() != value.toLowerCase()
+        //     }else{
+        //         return 
+        //     }
+            
+        //   })
+        //     if (val) {
+        //         throw new Error("Country name is Invalid")
+        //     }  
+        // }
     },
     address:{
         type:String,

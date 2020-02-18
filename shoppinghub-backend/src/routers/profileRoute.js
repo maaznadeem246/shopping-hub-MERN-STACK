@@ -21,7 +21,7 @@ routes.put('/profile/saveprofile', auth, async (req, res) => {
 
 
         Object.assign(profile,body)
-        // await console.log(body)
+        //await console.log(body)
         // await console.log(profile)
         await profile.save()
         res.send({profile,saved:true})

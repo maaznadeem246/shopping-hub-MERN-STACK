@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
-import Loading from "../Loading"
-import styled from "styled-components"
-import { Container, Row, Col, Button, Image } from 'react-bootstrap'
-import {getNames} from "country-list"
+import Loading from "../Loading";
+import styled from "styled-components";
+import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import {getNames} from "country-list";
+import validator from 'validator';
 
+const styles = {
+    saveButtonCss:{
+        width:150,
+        backgroundColor:'#3b945E',
+        fontSize:'18px',
+        color: 'white',
+        border: '1px solid #3b945E',
+
+        // '@media screen and (max-width: 800px)':{
+        //     width: '100px'
+        // }
+    },
+    saveButtonDiv:{
+            display:"flex",
+            justifyContent:'center'
+    }
+}
 
 const StyledFlexContainer = styled.div`
 
@@ -17,7 +35,7 @@ const StyledFlexContainer = styled.div`
 `
 
 const StyledFlexItem = styled.div`
-       
+    
     padding:10px 10px 10px 50px;
 
     @media all and (max-width: 800px) {
@@ -68,7 +86,7 @@ const StyledInput  = styled.input`
 `
 
 const StyledSelect = styled.select`
-    width:75%;
+    
     border:1.5px solid #646464;
     border-radius:3px;
     padding:10px 2px 10px 2px;
@@ -81,7 +99,7 @@ const StyledSelect = styled.select`
 `
 
 const StyledTextArea = styled.textarea`
-    width:400px;
+    width:470px;
     border:1.5px solid #646464;
     border-radius:2.5px;
     padding:10px 10px 10px 10px;
@@ -97,7 +115,11 @@ const StyledTextArea = styled.textarea`
 `
 
 const StyledError = styled.div`
-
+    
+    padding:3px 3px 3px 3px;
+  margin-top:0px;
+    font-size: 0.9rem;
+    display: none;
 `
 
 
@@ -128,7 +150,13 @@ class ProfileComponent extends Component{
             email,
             account,
             saveButton:false,
-            error: this.props.error,
+            mainError:this.props.error,
+            error: {
+                ername: null,
+                ercountry: null,
+                eraddress:null,
+                ers: null
+            },
 
         }
         this.handleChange = this.handleChange.bind(this)
@@ -149,13 +177,51 @@ class ProfileComponent extends Component{
         event.preventDefault();
         const { avater, country, address, name, email, account } = this.state
         const profileDetails = { avater, country, address, name}
-       
+         let val = this.validationOfForm()
+         if(val){
+             this.props.updateProfileFunction(profileDetails)     
+         }
         //console.log(this.state)
         //console.log(this.props)
-        this.props.updateProfileFunction(profileDetails)
+        
     }
 
+    validationOfForm = () => {
+        const { avater, country, address,error, name, account } = this.state
+        //console.log(name, ' ', email, ' ', password, ' ', confirmPassword, ' ' , account)
+        let ru = true
+        if (!name.length <= 0) {
+            let names = name.trim()
 
+            let nru = names.split(' ').filter(n => {
+                return !validator.isAlpha(n)
+            })
+
+            if (nru.length != 0) {
+                error.ername = "Name should be Alpha"
+                ru = false
+                //console.log("Name is not Alpha")
+            }
+        } else {
+            ru = false
+            error.ername = "Field is required"
+            //console.log("Fields are required")
+        }
+
+
+
+        if(country == 'null') {
+            ru = false
+            error.ercountry = "Select Country !"
+        }
+
+
+    
+        this.setState({
+            error,
+        })
+        return ru
+    }
 
 
     render(){
@@ -166,7 +232,7 @@ class ProfileComponent extends Component{
                     <Col>
                         <StyledFlexContainer>
                             <StyledFlexItem>
-                                {this.state.error.error && <div>{this.state.error.e} </div>}
+                                {this.state.mainError.error && <div>{this.state.mainError.e} </div>}
                             </StyledFlexItem>
                         </StyledFlexContainer>
                     </Col>
@@ -192,7 +258,10 @@ class ProfileComponent extends Component{
                                 value={this.state.name}
                                 name="name"
                                 />
-                                <StyledError></StyledError>
+                                <StyledError style={this.state.error.ername && { background: '#f8d7da', display: 'block' }} className="signUpDF  fade-in text-muted">
+                                    {this.state.error.ername && this.state.error.ername}
+                                </StyledError>
+                               
                             </StyledFlexItem>
                             <StyledFlexItem>
                                 <StyledLabel>Email</StyledLabel>
@@ -222,7 +291,9 @@ class ProfileComponent extends Component{
                             <option value="null">Select Your Country</option>
                             <CountriesOptions />
                             </StyledSelect>
-                                <StyledError></StyledError>
+                                <StyledError style={this.state.error.ercountry && { background: '#f8d7da', display: 'block' }} className="fade-in text-muted">
+                                    {this.state.error.ercountry && this.state.error.ercountry}
+                                </StyledError>
                             </StyledFlexItem>
                         </StyledFlexContainer>
                     </Col>
@@ -239,10 +310,9 @@ class ProfileComponent extends Component{
                 </Row>
                 <Row>
                     <Col>
-                        <StyledFlexContainer>
-                            <StyledFlexItem>
-                            {console.log(" in profile")}
-                                <Button type="submit" disabled={!this.state.saveButton} >
+                        <StyledFlexContainer style={styles.saveButtonDiv}>
+                            <StyledFlexItem style={styles.saveButtonDiv}>
+                                <Button style={styles.saveButtonCss}  type="submit" disabled={!this.state.saveButton} >
                                     Save 
                                 </Button>
                             </StyledFlexItem>
@@ -292,7 +362,8 @@ class SellerProfileDashboard extends Component{
                      profileDetails: !this.props.updateSellerProfile.updateProfileDetails
                                      ? this.state.profileDetails 
                                      : this.props.updateSellerProfile.updateProfileDetails.profile,
-                     pending: this.props.updateSellerProfile.pending
+                     pending: this.props.updateSellerProfile.pending,
+                     error: this.props.updateSellerProfile.error,
                 })
 
 
@@ -310,7 +381,7 @@ class SellerProfileDashboard extends Component{
 
     render(){
         const {pending} = this.state;
-
+        
         if(pending){
             return (
                 <div><Loading/></div>
@@ -322,7 +393,6 @@ class SellerProfileDashboard extends Component{
                     error={this.state.error}  
                     profileDetails={this.state.profileDetails} 
                     updateProfileFunction={this.updateProfile}
-
                 />
             )
         }
