@@ -69,7 +69,7 @@ class Dashboard extends Component {
     
 
     static getDerivedStateFromProps(props, state){
-        //console.log(props)
+        console.log(props.userD)
         //console.log(state)
         const token = localStorage.getItem('autt')
         
@@ -84,6 +84,13 @@ class Dashboard extends Component {
             props.signedOut();
             props.history.push({ pathname: '/signin' ,state:props.location.pathname})
          }
+        if (props.updateUserD){
+            if (props.updateUserD.profile != state.userD){
+                return {
+                    userD: { ...state.userD, name: props.updateUserD.profile.name}
+                }
+            }
+        }
         
         // if (props.userstoken == null) {
         //     props.history.push({ pathname: '/signin' })
@@ -122,6 +129,7 @@ class Dashboard extends Component {
     }
 
 
+
     render() {
         return (
             <div>
@@ -130,7 +138,7 @@ class Dashboard extends Component {
                 <Container fluid>
                     <Row>
                         <Col>
-                            <StyledDashboardCom active={this.state.cHam} >
+                            <StyledDashboardCom  active={this.state.cHam} >
                                 <DashboardCom forupdate={true}   />
                             </StyledDashboardCom>    
                         </Col>

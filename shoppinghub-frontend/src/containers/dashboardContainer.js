@@ -5,14 +5,15 @@ import {signOutUser, signedOut} from "../actions/signOutActions"
 
 
 const mapStateToProps = (state) => {
-    //console.log(state)
+    console.log(state)
     return {
         userD: state.user.userData,
         pending: state.user.pending,
         // error: state.signUpUser.error,
         signedOuterror: state.signOutUser.error,
         signedOutUser:state.signOutUser.userData,
-        userstoken: state.user.userToken
+        userstoken: state.user.userToken,
+        updateUserD: state.updateSellerProfile.updateProfileDetails
     }
 }
 

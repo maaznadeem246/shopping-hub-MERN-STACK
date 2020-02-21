@@ -241,6 +241,15 @@ class ProfileComponent extends Component{
                     <Col>
                         <StyledFlexContainer>
                             <StyledFlexItem>
+                                Your Profile
+                            </StyledFlexItem>
+                        </StyledFlexContainer>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <StyledFlexContainer>
+                            <StyledFlexItem>
                                 Avatar
                             </StyledFlexItem>
                         </StyledFlexContainer>
