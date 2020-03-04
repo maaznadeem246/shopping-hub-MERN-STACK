@@ -113,11 +113,9 @@ const StyledTextArea = styled.textarea`
     }
 
 `
-
 const StyledError = styled.div`
-    
     padding:3px 3px 3px 3px;
-  margin-top:0px;
+    margin-top:0px;
     font-size: 0.9rem;
     display: none;
 `

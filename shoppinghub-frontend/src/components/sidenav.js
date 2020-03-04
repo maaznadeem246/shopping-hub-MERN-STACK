@@ -129,7 +129,10 @@ const StyledNavItem = styled.div`
 
       text-decoration: none; /* Gets rid of underlining of icons */
     }
-    :active 
+    :active{
+         color: ${(props) => !props.active ? "white" : "#3b945E"};
+      background-color:${(props) => !props.active ? "#3b945E" : "white"  };
+    } 
     } 
   }
 `;

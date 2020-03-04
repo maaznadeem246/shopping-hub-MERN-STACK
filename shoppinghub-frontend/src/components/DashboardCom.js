@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {  Route } from 'react-router-dom';
+import {  Route, withRouter } from 'react-router-dom';
 import DashboardProfileContainer from '../containers/sellerProfileDashboardContainer'
+import DashboardProductsContainer from '../containers/sellerProductsDashboardContainer'
 
 
 class DashboardCom extends Component{
@@ -16,6 +17,11 @@ class DashboardCom extends Component{
         //  this.setState({
         //     forupdate: nextProps.forupdate
         //  })   
+
+        console.log(nextProps.match.isExact)
+        if (nextProps.match.isExact){
+            nextProps.history.push('/dashboard/products')
+        }
          
         // }else{
             return false
@@ -26,14 +32,16 @@ class DashboardCom extends Component{
         //console.log(this.props)
         return(
             <div >
-                <Route path="/dashboard/profile" component={() => (<DashboardProfileContainer />)} />
-                <Route path="/dashboard/products" component={() => (<div>Products</div>)} />
-                <Route path="/dashboard/orders" component={() => (<div>Orders</div>)} />
-                <Route path="/dashboard/sales-report" component={() => (<div>Sales Reports</div>)} />
+                <Route  path="/dashboard/profile" component={() => (<DashboardProfileContainer />)} />
+                <Route  path="/dashboard/products" component={() => (<DashboardProductsContainer/>)} />
+                
+                <Route  path="/dashboard/orders" component={() => (<div>Orders</div>)} />
+                <Route  path="/dashboard/sales-report" component={() => (<div>Sales Reports</div>)} />
+                
             </div>
         )
     }
 
 }
 
-export default DashboardCom;
+export default withRouter(DashboardCom);
