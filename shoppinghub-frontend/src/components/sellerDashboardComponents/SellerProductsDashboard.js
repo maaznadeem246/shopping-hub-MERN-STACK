@@ -6,7 +6,7 @@ import { Route, withRouter , Link} from 'react-router-dom';
 
 const CommonMainDiv = ({children}) =>{
     return(
-        <Container fluid>
+        <Container  fluid>
             <Row>
                 <Col></Col>
                 <Col className="blackborder" sm={12} md={10} lg={10}>{children}</Col>
@@ -35,6 +35,7 @@ class AddProduct extends Component{
             productName:'',
             category:'',
             stock:'',
+            description:'',
             mainError:{
                 error:null
             },
@@ -42,6 +43,7 @@ class AddProduct extends Component{
                 erproductname: null,
                 ercategory: null,
                 erstock: null,
+                erdescription:null,
                 ers: null
             },
 
@@ -80,7 +82,7 @@ class AddProduct extends Component{
                                         onChange={this.handleChange}
                                         value={this.state.productName}
                                         name="productName"
-                                        className="dashboardInput"
+                                        className="productNameInput dashboardInput"
                                     />
                                     <div style={this.state.error.erproductname && { background: '#f8d7da', display: 'block' }} className="dashboardError signUpDF  fade-in text-muted ">
                                         {this.state.error.erproductname && this.state.error.erproductname}
@@ -121,6 +123,32 @@ class AddProduct extends Component{
                                         {this.state.error.erstock && this.state.error.erstock}
                                     </div>
                                 </div>  
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <div className="flexContainer">
+                                <div className="flexItem">
+                                    <div className="dashboardLabel">Product Description</div>
+                                    <textarea className="productDescription dashboardTextArea" value={this.state.description} name="description" onChange={this.handleChange} />
+                                    <div style={this.state.error.erdescription && { background: '#f8d7da', display: 'block' }} className="dashboardError signUpDF  fade-in text-muted ">
+                                        {this.state.error.erdescription && this.state.error.erdescription}
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <div className="flexContainer">
+                                <div className="flexItem">
+                                    <div className="dashboardLabel">Product Images</div>
+                                    <textarea className="productDescription dashboardTextArea" value={this.state.description} name="description" onChange={this.handleChange} />
+                                    <div style={this.state.error.erdescription && { background: '#f8d7da', display: 'block' }} className="dashboardError signUpDF  fade-in text-muted ">
+                                        {this.state.error.erdescription && this.state.error.erdescription}
+                                    </div>
+                                </div>
                             </div>
                         </Col>
                     </Row>

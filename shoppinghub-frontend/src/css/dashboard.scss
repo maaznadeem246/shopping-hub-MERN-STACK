@@ -20,11 +20,12 @@
     display: -webkit-flex;
     align-content:center;
     flex-wrap:wrap;
+    justify-content: center;
 
 }
 
 .flexItem{
-    padding:10px 10px 10px 50px;
+    padding:10px 10px 10px 10px;
 }
 
 .dashboardLabel{
@@ -35,10 +36,11 @@
 
 .dashboardInput{
     width:350px;
+
     border:1.5px solid #646464;
     border-radius: 5px;
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-right:10px;
     padding-left:10px;
 }
@@ -54,7 +56,7 @@
     
     border:1.5px solid #646464;
     border-radius:3px;
-    padding:10px 4px 10px 4px;
+    padding:6px 4px 6px 4px;
     background-color:white;
     
 }
@@ -96,11 +98,22 @@
             justify-content:center;
     }
 
+    .justCenter{
+      justify-content: center;
+    }
+
+
 
 
     
 @media all and (max-width: 500px){
-      .flexItem{
+
+
+    }
+
+
+    @media all and (max-width: 800px) {
+            .flexItem{
         padding:6px 0px 6px 0px;
         width:100%;
         
@@ -122,16 +135,12 @@
         width:100%;
         font-size:1rem;
       }
-      .dashboardTextArea{
+            .dashboardTextArea{
           padding:7px 2px 7px 2px;
         width:100%;
         height:110px;
         font-size:1rem;
-      }
-    }
-
-    @media all and (max-width: 800px) {
-      
+      }      
 
     }
 
@@ -145,7 +154,7 @@
 
 
 .sidenavHam {
-  display: inline-block;
+  display: none;
   cursor: pointer;
     padding: 10px;
 
@@ -500,14 +509,21 @@
 
 
 
-
+.showCham{
+  height:50px;
+}
 
 @media (max-width: 768px){
 
   .paddingCont{
   padding-top:60px;
 }
-
+.showCham{
+  height:initial;
+}
+.sidenavHam{
+  display: inline-block;
+}
   .sideNav{
     width:100%;
     padding-top: 55px;

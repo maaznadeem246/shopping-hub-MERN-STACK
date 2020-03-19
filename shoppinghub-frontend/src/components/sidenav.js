@@ -188,7 +188,7 @@ class SideNav extends Component {
 
                     <Col style={{ padding: 0 }} xs={12} sm={12} md={12}>
                         <div className={this.props.cHam ? "sideNav hideSideNav" : "sideNav"}   >
-                        <div style={{width:"100%",display:"flex",flexDirection:"row-reverse"}}>
+                        <div className="showCham" style={{width:"100%",display:"flex",flexDirection:"row-reverse"}}>
                                 <div  className={!this.props.cHam ? "sidenavHam  change" : "sidenavHam"} style={this.props.cHam ? { marginRight: "auto", marginLeft: "auto" } : {}} onClick={() => this.props.changeHam()} >
                                 <div className="bar1"></div>
                                 <div className="bar2"></div>

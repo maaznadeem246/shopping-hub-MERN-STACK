@@ -4,3 +4,26 @@
     margin:10px;
     
 }
+
+
+.productNameInput{  
+    width: 200px
+}
+
+.productDescription{
+    width:400px
+}
+
+
+
+@media all and (max-width: 800px) {
+ .productNameInput,.productDescription{  
+    width: 100%;
+}   
+}
+
+@media all and (min-width: 1100px) {
+ .productNameInput{  
+    width: 250px
+    }   
+}

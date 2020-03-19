@@ -22,9 +22,10 @@ const StyledDashboardCom = styled.div`
 class Dashboard extends Component {
     constructor(props) {
         super(props);
+        console.log(window.screen.availWidth)
         this.state={
             token:'',
-            cHam:true,
+            cHam: window.screen.availWidth<800 ? true : false,
             userD:null,
             path:'',
             routesDetails: [
