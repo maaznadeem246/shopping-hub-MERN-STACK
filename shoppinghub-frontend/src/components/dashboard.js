@@ -9,7 +9,7 @@ const StyledDashboardCom = styled.div`
 
 
   margin-left:${(props) => props.active ? "6%" : "20%"};
-  border:1px solid black;
+  
 
     @media (max-width: 768px){
         margin-left:14%;
@@ -140,7 +140,7 @@ class Dashboard extends Component {
                 <Container fluid>
                     <Row>
                         <Col>
-                            <StyledDashboardCom  active={this.state.cHam} >
+                            <StyledDashboardCom className="blackborder"  active={this.state.cHam} >
                                 <DashboardCom forupdate={true}   />
                             </StyledDashboardCom>    
                         </Col>

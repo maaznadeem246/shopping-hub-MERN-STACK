@@ -5,120 +5,104 @@ import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import {getNames} from "country-list";
 import validator from 'validator';
 
-const styles = {
-    saveButtonCss:{
-        width:150,
-        backgroundColor:'#3b945E',
-        fontSize:'18px',
-        color: 'white',
-        border: '1px solid #3b945E',
 
-        // '@media screen and (max-width: 800px)':{
-        //     width: '100px'
-        // }
-    },
-    saveButtonDiv:{
-            display:"flex",
-            justifyContent:'center'
-    }
-}
 
-const StyledFlexContainer = styled.div`
+// const StyledFlexContainer = styled.div`
 
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    align-content:center;
-`
+//     display: -webkit-box;
+//     display: -moz-box;
+//     display: -ms-flexbox;
+//     display: -webkit-flex;
+//     display: flex;
+//     -webkit-flex-flow: row wrap;
+//     align-content:center;
+// `
 
-const StyledFlexItem = styled.div`
+// const StyledFlexItem = styled.div`
     
-    padding:10px 10px 10px 50px;
+//     padding:10px 10px 10px 50px;
 
-    @media all and (max-width: 800px) {
-        width:100%;
-    }
+//     @media all and (max-width: 800px) {
+//         width:100%;
+//     }
     
-    @media all and (max-width: 500px){
-        padding:8px 0px 8px 0px;
-        width:100%;
-    }
+//     @media all and (max-width: 500px){
+//         padding:8px 0px 8px 0px;
+//         width:100%;
+//     }
 
 
-`
+// `
 
-const StyledLabel = styled.div`
-    font-size:1.3rem;
-    padding:10px 0px 10px 0px;
+// const StyledLabel = styled.div`
+//     font-size:1.3rem;
+//     padding:10px 0px 10px 0px;
     
-    @media all and (max-width: 500px){
-        padding:7px 0px 7px 0px;
-        font-size:1rem
-        width:100%;
-    }
-`
+//     @media all and (max-width: 500px){
+//         padding:7px 0px 7px 0px;
+//         font-size:1rem;
+//         width:100%;
+//     }
+// `
 
-const StyledInput  = styled.input`
+// const StyledInput  = styled.input`
 
-    width:350px;
-    border:1.5px solid #646464;
-    border-radius: 5px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    padding-right:10px;
-    padding-left:10px;
-
-
+//     width:350px;
+//     border:1.5px solid #646464;
+//     border-radius: 5px;
+//     padding-top: 7px;
+//     padding-bottom: 7px;
+//     padding-right:10px;
+//     padding-left:10px;
 
 
-    @media all and (max-width: 800px) {
 
-    }
+
+//     @media all and (max-width: 800px) {
+
+//     }
     
-    @media all and (max-width: 500px){
-        width:100%;
-        font-size:1rem;
-    }
+//     @media all and (max-width: 500px){
+//         width:100%;
+//         font-size:1rem;
+//     }
 
-`
+// `
 
-const StyledSelect = styled.select`
+// const StyledSelect = styled.select`
     
-    border:1.5px solid #646464;
-    border-radius:3px;
-    padding:10px 2px 10px 2px;
-    background-color:white;
-     @media all and (max-width: 500px){
-       padding:7px 2px 7px 2px;
-        width:100%;
-        font-size:1rem;
-    }
-`
+//     border:1.5px solid #646464;
+//     border-radius:3px;
+//     padding:10px 2px 10px 2px;
+//     background-color:white;
+//      @media all and (max-width: 500px){
+//        padding:7px 2px 7px 2px;
+//         width:100%;
+//         font-size:1rem;
+//     }
+// `
 
-const StyledTextArea = styled.textarea`
-    width:470px;
-    border:1.5px solid #646464;
-    border-radius:2.5px;
-    padding:10px 10px 10px 10px;
-    background-color:white;
-    height:85px;
-     @media all and (max-width: 800px){
-       padding:7px 2px 7px 2px;
-        width:100%;
-        height:110px;
-        font-size:1rem;
-    }
+// const StyledTextArea = styled.textarea`
+//     width:470px;
+//     border:1.5px solid #646464;
+//     border-radius:2.5px;
+//     padding:10px 10px 10px 10px;
+//     background-color:white;
+//     height:85px;
+//      @media all and (max-width: 800px){
+//        padding:7px 2px 7px 2px;
+//         width:100%;
+//         height:110px;
+//         font-size:1rem;
+//     }
 
-`
-const StyledError = styled.div`
-    padding:3px 3px 3px 3px;
-    margin-top:0px;
-    font-size: 0.9rem;
-    display: none;
-`
+// `
+// const StyledError = styled.div`
+//     padding:3px 3px 3px 3px;
+//     margin-top:0px;
+//     font-size: 0.9rem;
+//     display: none;
+// `
 
 
 
@@ -226,105 +210,111 @@ class ProfileComponent extends Component{
      //console.log(this.state)
         return(
             <Container as="form" onSubmit={this.profileSave}   > 
+            <Row>
+                <Col></Col>
+                <Col sm={12} md={10} lg={10} >
                 <Row>
                     <Col>
-                        <StyledFlexContainer>
-                            <StyledFlexItem>
+                        <div className="flexContainer">
+                            <div className="flexItem">
                                 {this.state.mainError.error && <div>{this.state.mainError.e} </div>}
-                            </StyledFlexItem>
-                        </StyledFlexContainer>
+                            </div>
+                        </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <StyledFlexContainer>
-                            <StyledFlexItem>
+                        <div className="flexContainer">
+                            <div className="flexItem">  
                                 Your Profile
-                            </StyledFlexItem>
-                        </StyledFlexContainer>
+                            </div>
+                        </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <StyledFlexContainer>
-                            <StyledFlexItem>
+                        <div className="flexContainer">
+                            <div className="flexItem">
                                 Avatar
-                            </StyledFlexItem>
-                        </StyledFlexContainer>
+                            </div>
+                        </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <StyledFlexContainer>
-                            <StyledFlexItem>
-                                <StyledLabel>Name</StyledLabel>
-                                <StyledInput  
-
-                                type="text"
-                                onChange={this.handleChange}
-                                value={this.state.name}
-                                name="name"
+                        <div className="flexContainer">
+                            <div className="flexItem">
+                                <div className="dashboardLabel">Name</div>
+                                <input  
+                                    type="text"
+                                    onChange={this.handleChange}
+                                    value={this.state.name}
+                                    name="name" 
+                                    className="dashboardInput"
                                 />
-                                <StyledError style={this.state.error.ername && { background: '#f8d7da', display: 'block' }} className="signUpDF  fade-in text-muted">
+                                <div style={this.state.error.ername && { background: '#f8d7da', display: 'block' }} className="dashboardError signUpDF  fade-in text-muted ">
                                     {this.state.error.ername && this.state.error.ername}
-                                </StyledError>
+                                </div>
                                
-                            </StyledFlexItem>
-                            <StyledFlexItem>
-                                <StyledLabel>Email</StyledLabel>
-                                <StyledInput    
-
+                            </div>
+                            <div className="flexItem">
+                                <div className="dashboardLabel">Email</div>
+                                <input    
                                     type="text"
                                     onChange={this.handleChange}
                                     value={this.state.email}
                                     name="email"
+                                    className="dashboardInput"
                                 />
-                                <StyledError></StyledError>
-                            </StyledFlexItem>
-                        </StyledFlexContainer>
+                                <div className="dashboardError" ></div>
+                            </div>
+                        </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <StyledFlexContainer>
-                            <StyledFlexItem>
-                                <StyledLabel>Country</StyledLabel>
-                            <StyledSelect
-                               
+                        <div className="flexContainer">
+                            <div className="flexItem">
+                                <div className="dashboardLabel">Country</div>
+                            <select
+                               className="dashboardSelect"
                                 onChange={this.handleChange}
                                 value={this.state.country}
                                 name="country"
                             >
                             <option value="null">Select Your Country</option>
                             <CountriesOptions />
-                            </StyledSelect>
-                                <StyledError style={this.state.error.ercountry && { background: '#f8d7da', display: 'block' }} className="fade-in text-muted">
+                            </select>
+                                <div style={this.state.error.ercountry && { background: '#f8d7da', display: 'block' }} className="dashboardError fade-in text-muted">
                                     {this.state.error.ercountry && this.state.error.ercountry}
-                                </StyledError>
-                            </StyledFlexItem>
-                        </StyledFlexContainer>
+                                </div>
+                            </div>
+                        </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <StyledFlexContainer>
-                            <StyledFlexItem>
-                                <StyledLabel>Address</StyledLabel>
-                                <StyledTextArea value={this.state.address} name="address" onChange={this.handleChange} />
-                            </StyledFlexItem>
-                        </StyledFlexContainer>
+                        <div  className="flexContainer">
+                            <div className="flexItem">
+                                <div className="dashboardLabel">Address</div>
+                                    <textarea className="dashboardTextArea"  value={this.state.address} name="address" onChange={this.handleChange} />
+                            </div>
+                        </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <StyledFlexContainer style={styles.saveButtonDiv}>
-                            <StyledFlexItem style={styles.saveButtonDiv}>
-                                <Button style={styles.saveButtonCss}  type="submit" disabled={!this.state.saveButton} >
+                            <div className="saveButtonDiv flexContainer " >
+                                <div className="saveButtonDiv flexItem " >
+                                        <Button type="submit" disabled={!this.state.saveButton} className="saveButtonCss"   >
                                     Save 
                                 </Button>
-                            </StyledFlexItem>
-                        </StyledFlexContainer>
+                            </div>
+                        </div>
                     </Col>
+                </Row>
+                    </Col>
+                    <Col></Col>
                 </Row>
             </Container>
         )

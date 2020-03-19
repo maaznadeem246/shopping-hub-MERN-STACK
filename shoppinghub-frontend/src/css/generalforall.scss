@@ -1,0 +1,14 @@
+
+.unsetLink{
+    text-decoration: none;
+    color:initial;
+    &:hover{
+        text-decoration: none;
+        color:inherit;
+    }
+}
+
+
+.blackborder{
+    border:1px solid black;
+}

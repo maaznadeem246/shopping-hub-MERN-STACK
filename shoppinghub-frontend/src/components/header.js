@@ -1,9 +1,9 @@
-import '../css/header.css'
 import React, { Component } from 'react';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Nav, Navbar, Form, NavDropdown, FormControl, Button, NavItem} from 'react-bootstrap'
 import {connect} from "react-redux"
 import { userToken, userDetails } from "../actions/userActions"
+
 
 class Header extends Component {
     constructor(props) {
