@@ -4,6 +4,26 @@ import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import { Route, withRouter , Link} from 'react-router-dom';
 
 
+class ProductImages extends Component{
+    constructor(props) {
+        super(props)
+
+    }
+    render() {
+        return (
+            <div className="productDescription dashboardTextArea" >
+                {(this.props.fileArray || []).map(url => (
+                    <img className="selectedImages" src={url} alt="..." />
+                ))}
+                <input type="file" className="productaddimageinput" onChange={this.props.uploadMultipleFiles} multiple />
+            </div>
+        )
+    }
+    
+}
+
+
+
 const CommonMainDiv = ({children}) =>{
     return(
         <Container  fluid>
@@ -15,6 +35,8 @@ const CommonMainDiv = ({children}) =>{
         </Container>
     )
 }
+
+
 
 class ProductDetails extends Component {
     constructor(props) {
@@ -28,6 +50,8 @@ class ProductDetails extends Component {
 }
 
 class AddProduct extends Component{
+    fileObj = [];
+    fileArray = [];
     constructor(props){
         super(props)
     
@@ -36,6 +60,8 @@ class AddProduct extends Component{
             category:'',
             stock:'',
             description:'',
+            price:'',
+            discount:'',
             mainError:{
                 error:null
             },
@@ -44,11 +70,31 @@ class AddProduct extends Component{
                 ercategory: null,
                 erstock: null,
                 erdescription:null,
+                erprice:null,
+                erdiscount:null,
                 ers: null
             },
+            file:[null]
 
         }
         this.handleChange = this.handleChange.bind(this)
+        this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
+        this.uploadFiles = this.uploadFiles.bind(this)
+    }
+
+    uploadMultipleFiles(e) {
+
+        this.fileObj.push(e.target.files)
+        for (let i = 0; i < this.fileObj[0].length; i++) {
+            this.fileArray.push(URL.createObjectURL(this.fileObj[0][i]))
+        }
+        
+        this.setState({ file: this.fileArray })
+    }
+
+    uploadFiles(e) {
+        e.preventDefault()
+        console.log(this.state.file)
     }
 
     handleChange(event) {
@@ -130,6 +176,21 @@ class AddProduct extends Component{
                         <Col>
                             <div className="flexContainer">
                                 <div className="flexItem">
+                                    <div className="dashboardLabel">Product Images</div>
+                                   
+                                        <ProductImages fileArray={this.fileArray} uploadMultipleFiles={this.uploadMultipleFiles} />
+                                    
+                                    <div style={this.state.error.erdescription && { background: '#f8d7da', display: 'block' }} className="dashboardError signUpDF  fade-in text-muted ">
+                                        {this.state.error.erdescription && this.state.error.erdescription}
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <div className="flexContainer">
+                                <div className="flexItem">
                                     <div className="dashboardLabel">Product Description</div>
                                     <textarea className="productDescription dashboardTextArea" value={this.state.description} name="description" onChange={this.handleChange} />
                                     <div style={this.state.error.erdescription && { background: '#f8d7da', display: 'block' }} className="dashboardError signUpDF  fade-in text-muted ">
@@ -143,11 +204,42 @@ class AddProduct extends Component{
                         <Col>
                             <div className="flexContainer">
                                 <div className="flexItem">
-                                    <div className="dashboardLabel">Product Images</div>
-                                    <textarea className="productDescription dashboardTextArea" value={this.state.description} name="description" onChange={this.handleChange} />
-                                    <div style={this.state.error.erdescription && { background: '#f8d7da', display: 'block' }} className="dashboardError signUpDF  fade-in text-muted ">
-                                        {this.state.error.erdescription && this.state.error.erdescription}
+                                    <div className="dashboardLabel">Product Price</div>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        value={this.state.price}
+                                        name="productPirice"
+                                        className="productNameInput dashboardInput"
+                                    />
+                                    <div style={this.state.error.erproductprice && { background: '#f8d7da', display: 'block' }} className="dashboardError signUpDF  fade-in text-muted ">
+                                        {this.state.error.erproductprice && this.state.error.erproductprice}
                                     </div>
+                                </div>
+                                <div className="flexItem">
+                                    <div className="dashboardLabel">Product Discount</div>
+                                    <input
+                                        type="text"
+                                        onChange={this.handleChange}
+                                        value={this.state.productDiscount}
+                                        name="productName"
+                                        className="productNameInput dashboardInput"
+                                    />
+                                    <div style={this.state.error.erproductdiscount && { background: '#f8d7da', display: 'block' }} className="dashboardError signUpDF  fade-in text-muted ">
+                                        {this.state.error.erproductdiscount && this.state.error.erproductdiscount}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </Col>
+                    </Row>    
+                    <Row>
+                        <Col>
+                            <div className="saveButtonDiv flexContainer " >
+                                <div className="saveButtonDiv flexItem " >
+                                    <Button type="submit" disabled={!this.state.saveButton} className="saveButtonCss"   >
+                                       Add Product
+                                </Button>
                                 </div>
                             </div>
                         </Col>
